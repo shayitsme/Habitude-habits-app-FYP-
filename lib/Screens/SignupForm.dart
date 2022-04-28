@@ -3,6 +3,7 @@ import 'package:login_with_signup/Comm/comHelper.dart';
 import 'package:login_with_signup/Comm/genLoginSignupHeader.dart';
 import 'package:login_with_signup/DatabaseHandler/DbHelper.dart';
 import 'package:login_with_signup/Screens/LoginForm.dart';
+import 'package:toast/toast.dart';
 import '../Comm/genTextFormField.dart';
 import '../Model/UserModel.dart';
 
@@ -37,27 +38,27 @@ class _SignupFormState extends State<SignupForm> {
 
     if (formKey.currentState!.validate()) {
       if (passwd != cpasswd) {
+        Toast.show("Toast plugin app", duration: Toast.lengthShort, gravity:  Toast.bottom);
         alertDialog(context, 'Password does not match');
       }
       else {
         formKey.currentState!.save();
+
         UserModel uModel = UserModel(uid, uname, email, passwd);
-        dbHelper.saveData(uModel);
-        alertDialog(context, "Success");
-      }
+        await dbHelper.saveData(uModel).then((userData) {
+          Toast.show("Toast plugin app", duration: Toast.lengthShort, gravity:  Toast.bottom);
+          alertDialog(context, "Successfully Saved");
+          Navigator.push(context,
+              MaterialPageRoute(builder: (_) => LoginForm()));
+
+        }).catchError((error) {
+          print(error);
+          Toast.show("Toast plugin app", duration: Toast.lengthShort, gravity:  Toast.bottom);
+          alertDialog(context, "Error: Data Save Fail");
+        });
+        }
     }
 
-        if (uid.isEmpty) {
-      alertDialog(context, "Please Enter User ID");
-    } else if (uname.isEmpty) {
-      alertDialog(context, "Please Enter User Name");
-    } else if (email.isEmpty) {
-      alertDialog(context, "Please Enter Email");
-    } else if (passwd.isEmpty) {
-      alertDialog(context, "Please Enter Password");
-    } else if (cpasswd.isEmpty) {
-      alertDialog(context, "Please Confirm Password");
-    }
   }
 
 

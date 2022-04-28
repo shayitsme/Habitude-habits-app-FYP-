@@ -41,13 +41,25 @@ class DbHelper {
         " PRIMARY KEY ($C_UserID)"
         ")");
   }
-  Future<UserModel> saveData(UserModel user)async{
-    var dbClient = await db;
-    user.user_id = (await dbClient.insert(Table_User, user.toMap())) as String;
-    return user;
-  }
 
-}
+  Future<int> saveData(UserModel user) async {
+    var dbClient = await db;
+    var res = await dbClient.insert(Table_User, user.toMap());
+    return res;
+  }
+  Future<UserModel?> getLoginUser(String userId, String password) async {
+    var dbClient = await db;
+    var res = await dbClient.rawQuery("SELECT * FROM $Table_User WHERE "
+        "$C_UserID = '$userId' AND "
+        "$C_Password = '$password'");
+
+    if (res.length > 0) {
+      return UserModel.fromMap(res.first);
+    }
+
+    return null;
+  }
+  }
 
 
 
