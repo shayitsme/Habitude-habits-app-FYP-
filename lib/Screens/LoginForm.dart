@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login_with_signup/Comm/comHelper.dart';
 import 'package:login_with_signup/Comm/genTextFormField.dart';
 import 'package:login_with_signup/Screens/SignupForm.dart';
+import 'package:toast/toast.dart';
 import '../Comm/genLoginSignupHeader.dart';
 import '../DatabaseHandler/DbHelper.dart';
 import 'HomeForm.dart';
@@ -53,6 +54,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Habitude'),

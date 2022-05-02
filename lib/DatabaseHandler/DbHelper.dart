@@ -6,7 +6,7 @@ import 'package:path/path.dart';
 import 'dart:io' as io;
 
 class DbHelper {
-  static late Database _db;
+  static Database? _db;
 
   static const String DB_Name = 'test.db';
   static const String Table_User = 'user';
@@ -18,11 +18,10 @@ class DbHelper {
   static const String C_Password = 'password';
 
   Future<Database> get db async {
-    if (_db != true) {
-      return _db;
+    if (_db == null) {
+      _db = await initDb();
     }
-    _db = await initDb();
-    return _db;
+    return _db!;
   }
 
   initDb() async {
@@ -45,7 +44,7 @@ class DbHelper {
   Future<int> saveData(UserModel user) async {
     var dbClient = await db;
     var res = await dbClient.insert(Table_User, user.toMap());
-    return (res);
+    return res;
   }
   Future<UserModel?> getLoginUser(String userId, String password) async {
     var dbClient = await db;
@@ -57,7 +56,7 @@ class DbHelper {
       return UserModel.fromMap(res.first);
     }
 
-    return (null);
+    return null;
   }
   }
 
