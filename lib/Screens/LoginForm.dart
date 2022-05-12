@@ -67,7 +67,7 @@ class _LoginFormState extends State<LoginForm> {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  genLoginSignupHeader('Login'),
+                  genLoginSignupHeader('Log In'),
                   getTextFormField(controller: conUserId,
                       hintName: 'User ID',
                       icon: Icons.person),

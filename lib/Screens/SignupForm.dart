@@ -4,7 +4,6 @@ import 'package:login_with_signup/Comm/genLoginSignupHeader.dart';
 import 'package:login_with_signup/DatabaseHandler/DbHelper.dart';
 import 'package:login_with_signup/Screens/LoginForm.dart';
 import 'package:toast/toast.dart';
-
 import '../Comm/genTextFormField.dart';
 import '../Model/UserModel.dart';
 
@@ -74,7 +73,7 @@ class _SignupFormState extends State<SignupForm> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      genLoginSignupHeader('Signup'),
+                      genLoginSignupHeader('Sign Up'),
                       getTextFormField(controller: conUserId,
                           hintName: 'User ID',
                           icon: Icons.person),
