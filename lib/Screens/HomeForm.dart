@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:login_with_signup/Screens/HomePage.dart';
 import 'package:login_with_signup/Screens/HomePage2.dart';
+import 'package:login_with_signup/Screens/HomePage3.dart';
+import 'package:login_with_signup/Screens/HomePage4.dart';
+import 'package:login_with_signup/Screens/HomePage5.dart';
+import 'package:login_with_signup/Screens/HomePage6.dart';
 
 import 'LoginForm.dart';
 class HomeForm extends StatefulWidget {
@@ -14,10 +18,15 @@ class _HomeFormState extends State<HomeForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Habitude Home'),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.amber,
         elevation: 4.0,
+        leading: Container(
+          padding: EdgeInsets.all(7),
+          child: Image.asset("assets/images/logo.jpg"),
+        ),
         actions: [
           IconButton(icon: Icon(Icons.logout),
             onPressed: () => {
@@ -72,7 +81,10 @@ class _HomeFormState extends State<HomeForm> {
           Card(
             margin: EdgeInsets.all(8),
             child: InkWell(
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder:(_)=> HomePage3()));
+              },
               splashColor: Colors.amber,
               child: Center(
                 child: Column(
@@ -88,7 +100,10 @@ class _HomeFormState extends State<HomeForm> {
           Card(
             margin: EdgeInsets.all(8),
             child: InkWell(
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder:(_)=> HomePage4()));
+              },
               splashColor: Colors.amber,
               child: Center(
                 child: Column(
@@ -104,7 +119,10 @@ class _HomeFormState extends State<HomeForm> {
           Card(
             margin: EdgeInsets.all(8),
             child: InkWell(
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder:(_)=> HomePage5()));
+              },
               splashColor: Colors.amber,
               child: Center(
                 child: Column(
@@ -120,7 +138,10 @@ class _HomeFormState extends State<HomeForm> {
           Card(
             margin: EdgeInsets.all(8),
             child: InkWell(
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder:(_)=> HomePage6()));
+              },
               splashColor: Colors.amber,
               child: Center(
                 child: Column(

@@ -46,10 +46,10 @@ class DbHelper {
     var res = await dbClient.insert(Table_User, user.toMap());
     return res;
   }
-  Future<UserModel?> getLoginUser(String userId, String password) async {
+  Future<UserModel?> getLoginUser(String email, String password) async {
     var dbClient = await db;
     var res = await dbClient.rawQuery("SELECT * FROM $Table_User WHERE "
-        "$C_UserID = '$userId' AND "
+        "$C_Email = '$email' AND "
         "$C_Password = '$password'");
 
     if (res.length > 0) {

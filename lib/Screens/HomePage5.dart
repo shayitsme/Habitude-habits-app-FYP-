@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../widget/add_habit_dialog_widget.dart';
+import '../widget/add5_habit_dialog_widget.dart';
 import 'HomeForm.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage5 extends StatefulWidget {
+  const HomePage5({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePage5> createState() => _HomePage5State();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePage5State extends State<HomePage5> {
   int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     final tabs = [
@@ -22,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('My study habit'),
+        title: Text('My sleep habit'),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.amber,
         elevation: 4.0,
@@ -32,10 +31,9 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(icon: Icon(Icons.home),
-            onPressed: () =>
-            {
+            onPressed: () => {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (_) => HomeForm()))
+                  MaterialPageRoute(builder:(_)=> HomeForm()))
             },
           ),
         ],
@@ -45,27 +43,25 @@ class _HomePageState extends State<HomePage> {
         unselectedItemColor: Colors.white.withOpacity(0.7),
         selectedItemColor: Colors.white,
         currentIndex: selectedIndex,
-        onTap: (index) =>
-            setState(() {
-              selectedIndex = index;
-            }),
+        onTap: (index) => setState(() {
+          selectedIndex = index;
+        }),
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.fact_check_outlined),
               label: 'Habits'),
-          BottomNavigationBarItem(icon: Icon(Icons.done, size: 28),
+          BottomNavigationBarItem(icon: Icon(Icons.done, size:28),
               label: 'Completed'),
         ],
       ),
-
       body: tabs[selectedIndex],
       floatingActionButton: FloatingActionButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
         backgroundColor: Colors.amber,
-        onPressed: () => showDialog(
+        onPressed: ()  => showDialog(
           context: context,
-          builder: (context) => AddHabitDialogWidget(),
+          builder: (context) => Add5HabitDialogWidget(),
           barrierDismissible: false,
         ),
         child: Icon(Icons.add),
@@ -73,4 +69,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-

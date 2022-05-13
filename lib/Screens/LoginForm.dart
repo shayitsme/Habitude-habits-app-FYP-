@@ -17,7 +17,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final formKey = new GlobalKey<FormState>();
   get children => null;
-  final conUserId = TextEditingController();
+  final conEmail = TextEditingController();
   final conPassword = TextEditingController();
   var dbHelper;
 
@@ -28,15 +28,15 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   login() async {
-    String uid = conUserId.text;
+    String email = conEmail.text;
     String passwd = conPassword.text;
 
-    if (uid.isEmpty) {
-      alertDialog(context, "Please enter user ID");
+    if (email.isEmpty) {
+      alertDialog(context, "Please enter Email");
     } else if(passwd.isEmpty) {
       alertDialog(context, "Please enter password");
     } else{
-       await dbHelper.getLoginUser(uid, passwd).then((userData) {
+       await dbHelper.getLoginUser(email, passwd).then((userData) {
          if (userData != null) {
          Navigator.pushAndRemoveUntil(context,
              MaterialPageRoute(builder: (_) => HomeForm()),
@@ -57,7 +57,9 @@ class _LoginFormState extends State<LoginForm> {
     ToastContext().init(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Habitude'),
+        automaticallyImplyLeading: false,
       ),
 
       body: SingleChildScrollView(
@@ -68,9 +70,9 @@ class _LoginFormState extends State<LoginForm> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   genLoginSignupHeader('Log In'),
-                  getTextFormField(controller: conUserId,
-                      hintName: 'User ID',
-                      icon: Icons.person),
+                  getTextFormField(controller: conEmail,
+                      hintName: 'Email',
+                      icon: Icons.email),
                   SizedBox(height: 5.0),
                   getTextFormField(controller: conPassword,
                     hintName: 'Password',
@@ -81,7 +83,8 @@ class _LoginFormState extends State<LoginForm> {
                   TextButton(
                     child: Text('Login'),
                     style: TextButton.styleFrom(
-                      primary: Colors.white,
+                      primary: Colors.black,
+                      minimumSize: Size(300.0, 0.0),
                       backgroundColor: Colors.amber[400],
                       onSurface: Colors.grey,
                     ),
@@ -102,7 +105,8 @@ class _LoginFormState extends State<LoginForm> {
                   TextButton(
                     child: Text('Sign Up'),
                     style: TextButton.styleFrom(
-                      primary: Colors.white,
+                      primary: Colors.black,
+                      minimumSize: Size(300.0, 0.0),
                       backgroundColor: Colors.amber[400],
                       onSurface: Colors.grey,
                     ),

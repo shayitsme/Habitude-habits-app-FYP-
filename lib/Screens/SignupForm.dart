@@ -62,7 +62,10 @@ class _SignupFormState extends State<SignupForm> {
     Widget build(BuildContext context) {
     ToastContext().init(context);
       return Scaffold(
-        appBar: AppBar(title: Text('Habitude'),
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Habitude'),
+          automaticallyImplyLeading: false,
         ),
         body: Form(
           key: formKey,
@@ -103,7 +106,8 @@ class _SignupFormState extends State<SignupForm> {
                       TextButton(
                         child: Text('Sign Up'),
                         style: TextButton.styleFrom(
-                          primary: Colors.white,
+                          primary: Colors.black,
+                          minimumSize: Size(300.0, 0.0),
                           backgroundColor: Colors.amber[400],
                           onSurface: Colors.grey,
                         ),
@@ -123,7 +127,8 @@ class _SignupFormState extends State<SignupForm> {
                       TextButton(
                         child: Text('Sign In'),
                         style: TextButton.styleFrom(
-                          primary: Colors.white,
+                          primary: Colors.black,
+                          minimumSize: Size(300.0, 0.0),
                           backgroundColor: Colors.amber[400],
                           onSurface: Colors.grey,
                         ),
