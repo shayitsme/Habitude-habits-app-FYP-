@@ -63,8 +63,7 @@ class _SignupFormState extends State<SignupForm> {
     ToastContext().init(context);
       return Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-          title: Text('Habitude'),
+
           automaticallyImplyLeading: false,
         ),
         body: Form(

@@ -57,11 +57,9 @@ class _LoginFormState extends State<LoginForm> {
     ToastContext().init(context);
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text('Habitude'),
+
         automaticallyImplyLeading: false,
       ),
-
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(

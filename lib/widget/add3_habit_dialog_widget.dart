@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'habit3_form_widget.dart';
+
 class Add3HabitDialogWidget extends StatefulWidget {
   const Add3HabitDialogWidget({Key? key}) : super(key: key);
 
@@ -24,8 +26,14 @@ class _Add3HabitDialogWidgetState extends State<Add3HabitDialogWidget> {
             fontWeight: FontWeight.bold,
             fontSize: 22,
           ),
-
         ),
+        SizedBox(height: 8),
+        Habit3FormWidget(
+          onChangedTitle: (title) => setState(() => this.title = title),
+          onChangedDescription: (description) => setState(() => this.description = description),
+          onSavedHabit: () {}, description: '', title: '',
+        ),
+
       ],
     ),
   );
