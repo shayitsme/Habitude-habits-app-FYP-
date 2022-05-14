@@ -23,15 +23,50 @@ class HabitFormWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
            buildTitle(),
+            SizedBox(height: 8),
+            buildDescription(),
+            SizedBox(height: 32),
+            buildButton(),
           ]
       ),
      );
 
  Widget buildTitle() =>
      TextFormField(
+       maxLines: 2,
+       initialValue: title,
+       onChanged: onChangedTitle,
+       validator: (title) {
+         if (title!.isEmpty) {
+           return 'The title cannot be empty';
+         }
+         return null;
+       },
+
       decoration: InputDecoration(
        border: UnderlineInputBorder(),
        labelText: 'Title',
       ),
      );
+
+ Widget buildDescription() => TextFormField(
+   maxLines: 3,
+   initialValue: description,
+   onChanged: onChangedDescription,
+ decoration: InputDecoration(
+ border: UnderlineInputBorder(),
+ labelText: 'Description',
+ ),
+ );
+ Widget buildButton() => SizedBox(
+   width: double.infinity,
+   child: ElevatedButton(
+     style: ButtonStyle(
+       backgroundColor: MaterialStateProperty.all(Colors.amber),
+     ),
+     onPressed: onSavedHabit,
+     child: Text('Save'),
+   ),
+ );
+
 }
