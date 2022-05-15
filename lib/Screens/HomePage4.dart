@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widget/add4_habit_dialog_widget.dart';
+import '../widget/habit4_list_widget.dart';
 import 'HomeForm.dart';
 
 class HomePage4 extends StatefulWidget {
@@ -15,7 +16,7 @@ class _HomePage4State extends State<HomePage4> {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      Container(),
+      Habit4ListWidget(),
       Container(),
     ];
     return Scaffold(
