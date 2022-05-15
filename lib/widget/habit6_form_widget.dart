@@ -33,7 +33,7 @@ class Habit6FormWidget extends StatelessWidget {
 
   Widget buildTitle() =>
       TextFormField(
-        maxLines: 2,
+        maxLines: 1,
         initialValue: title,
         onChanged: onChangedTitle,
         validator: (title) {
@@ -44,7 +44,9 @@ class Habit6FormWidget extends StatelessWidget {
         },
 
         decoration: InputDecoration(
-          border: UnderlineInputBorder(),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))
+          ),
           labelText: 'Title',
         ),
       );
@@ -54,7 +56,9 @@ class Habit6FormWidget extends StatelessWidget {
     initialValue: description,
     onChanged: onChangedDescription,
     decoration: InputDecoration(
-      border: UnderlineInputBorder(),
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10))
+      ),
       labelText: 'Description',
     ),
   );

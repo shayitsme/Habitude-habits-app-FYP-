@@ -25,6 +25,8 @@ class HabitFormWidget extends StatelessWidget {
            buildTitle(),
             SizedBox(height: 8),
             buildDescription(),
+            SizedBox(height: 8),
+            buildDate(),
             SizedBox(height: 32),
             buildButton(),
           ]
@@ -33,7 +35,7 @@ class HabitFormWidget extends StatelessWidget {
 
  Widget buildTitle() =>
      TextFormField(
-       maxLines: 2,
+       maxLines: 1,
        initialValue: title,
        onChanged: onChangedTitle,
        validator: (title) {
@@ -44,7 +46,9 @@ class HabitFormWidget extends StatelessWidget {
        },
 
       decoration: InputDecoration(
-       border: UnderlineInputBorder(),
+       border: OutlineInputBorder(
+           borderRadius: BorderRadius.all(Radius.circular(10))
+       ),
        labelText: 'Title',
       ),
      );
@@ -54,10 +58,23 @@ class HabitFormWidget extends StatelessWidget {
    initialValue: description,
    onChanged: onChangedDescription,
  decoration: InputDecoration(
- border: UnderlineInputBorder(),
+ border: OutlineInputBorder(
+     borderRadius: BorderRadius.all(Radius.circular(10))
+ ),
  labelText: 'Description',
  ),
  );
+
+ Widget buildDate() => TextFormField(
+     decoration: InputDecoration(
+         border: OutlineInputBorder(
+           borderRadius: BorderRadius.all(Radius.circular(10)),
+         ),
+       labelText: 'Date',
+     ),);
+
+
+
  Widget buildButton() => SizedBox(
    width: double.infinity,
    child: ElevatedButton(
@@ -68,5 +85,6 @@ class HabitFormWidget extends StatelessWidget {
      child: Text('Save'),
    ),
  );
+
 
 }
