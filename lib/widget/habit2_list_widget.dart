@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:login_with_signup/models/habit2.dart';
 
-import '../models/habit.dart';
+
 import 'habit2_widget.dart';
 
 class Habit2ListWidget extends StatelessWidget {
@@ -9,9 +10,9 @@ class Habit2ListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Habit2Widget(
-      habit: Habit(
+      habit: Habit2(
           createdTime: DateTime.now(),
-          title: 'Walk the dog', id: ''
+          title: 'Walk the cat', id: ''
       ),
     );
   }

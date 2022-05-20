@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:login_with_signup/models/habit4.dart';
 
 import '../models/habit.dart';
 
@@ -10,9 +11,9 @@ class Habit4ListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Habit4Widget(
-      habit: Habit(
+      habit: Habit4(
           createdTime: DateTime.now(),
-          title: 'Walk the dog', id: ''
+          title: 'Walk the lion', id: ''
       ),
     );
   }
