@@ -1,20 +1,39 @@
 import 'package:flutter/cupertino.dart';
-import 'package:login_with_signup/models/habit4.dart';
 
-import '../models/habit.dart';
+import 'package:provider/provider.dart';
 
-import 'habit4_widget.dart';
+
+
+import '../provider/habits.dart';
+
+import 'habit_widget.dart';
 
 class Habit4ListWidget extends StatelessWidget {
   const Habit4ListWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Habit4Widget(
-      habit: Habit4(
-          createdTime: DateTime.now(),
-          title: 'Walk the lion', id: ''
+    final provider = Provider.of<HabitsProvider>(context);
+    final habits = provider.habits;
+
+    return habits.isEmpty
+        ? Center(
+      child: Text(
+        'No habits',
+        style: TextStyle(fontSize: 20),
       ),
+    )
+
+        :ListView.separated(
+      physics: BouncingScrollPhysics(),
+      padding: EdgeInsets.all(16),
+      separatorBuilder: (context, index) => Container(height: 8),
+      itemCount: habits.length,
+      itemBuilder: (context, index) {
+        final habit = habits[index];
+
+        return HabitWidget(habit: habit);
+      },
     );
   }
 }

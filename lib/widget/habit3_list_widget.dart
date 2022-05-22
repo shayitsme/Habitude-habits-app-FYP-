@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:login_with_signup/models/habit3.dart';
 
-import '../models/habit.dart';
-import 'habit3_widget.dart';
+import 'package:provider/provider.dart';
+
+
+import '../provider/habits.dart';
+
+import 'habit_widget.dart';
 
 
 class Habit3ListWidget extends StatelessWidget {
@@ -10,11 +13,29 @@ class Habit3ListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Habit3Widget(
-      habit: Habit3(
-          createdTime: DateTime.now(),
-          title: 'Walk the monkey', id: ''
+    final provider = Provider.of<HabitsProvider>(context);
+    final habits = provider.habits;
+
+    return habits.isEmpty
+        ? Center(
+      child: Text(
+        'No habits',
+        style: TextStyle(fontSize: 20),
       ),
+    )
+
+        :ListView.separated(
+      physics: BouncingScrollPhysics(),
+      padding: EdgeInsets.all(16),
+      separatorBuilder: (context, index) => Container(height: 8),
+      itemCount: habits.length,
+      itemBuilder: (context, index) {
+        final habit = habits[index];
+
+        return HabitWidget(habit: habit);
+      },
     );
   }
 }
+
+

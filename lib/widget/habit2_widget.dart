@@ -11,8 +11,30 @@ class Habit2Widget extends StatelessWidget {
     Key? key, required this. habit}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Slidable(child: buildHabit(context),);
-
+  Widget build(BuildContext context) => ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child:Slidable(
+    actionPane: SlidableDrawerActionPane(),
+    key: Key(habit.id),
+    actions: [
+      IconSlideAction(
+        color: Colors.green,
+        onTap: () {},
+        caption: 'Edit',
+        icon: Icons.edit,
+      )
+    ],
+    secondaryActions: [
+      IconSlideAction(
+        color: Colors.red,
+        caption: 'Delete',
+        onTap: () {},
+        icon: Icons.delete,
+      )
+    ],
+    child: buildHabit(context),
+  ),
+  );
 
 
 

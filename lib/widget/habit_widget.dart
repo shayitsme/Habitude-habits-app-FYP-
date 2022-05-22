@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-
-
 import '../models/habit.dart';
 
 
@@ -14,7 +12,9 @@ class HabitWidget extends StatelessWidget {
 
 
   @override
-  Widget build(BuildContext context) => Slidable(
+  Widget build(BuildContext context) => ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child:Slidable(
       actionPane: SlidableDrawerActionPane(),
       key: Key(habit.id),
       actions: [
@@ -34,7 +34,8 @@ class HabitWidget extends StatelessWidget {
         )
       ],
       child: buildHabit(context),
-    );
+    ),
+  );
 
 
   Widget buildHabit(BuildContext context) => Container(
