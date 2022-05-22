@@ -2,37 +2,53 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 
-import '../models/habit.dart';
 
+import '../models/habit.dart';
 
 
 
 class HabitWidget extends StatelessWidget {
   final Habit habit;
   const HabitWidget({
-    Key? key, required this. habit}) : super(key: key);
+    Key? key, required this. habit,}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) => Slidable(
+      actionPane: SlidableDrawerActionPane(),
+      key: Key(habit.id),
+      actions: [
+        IconSlideAction(
+          color: Colors.green,
+          onTap: () {},
+          caption: 'Edit',
+          icon: Icons.edit,
+        )
+      ],
+      secondaryActions: [
+        IconSlideAction(
+          color: Colors.red,
+          caption: 'Delete',
+          onTap: () {},
+          icon: Icons.delete,
+        )
+      ],
+      child: buildHabit(context),
+    );
 
-  child: buildHabit(context));
 
-
-
-
-
-  Widget buildHabit(BuildContext context)=>Container(
+  Widget buildHabit(BuildContext context) => Container(
     color: Colors.white,
     padding: EdgeInsets.all(20),
     child: Row(
       children: [
         Checkbox(
-          activeColor: Colors. amber,
+          activeColor: Theme.of(context).primaryColor,
           checkColor: Colors.black,
-          value: habit. isDone,
+          value: habit.isDone,
           onChanged: (_) {},
         ),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +57,7 @@ class HabitWidget extends StatelessWidget {
                 habit.title,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.amber,
+                  color: Theme.of(context).primaryColor,
                   fontSize: 22,
                 ),
               ),
@@ -59,5 +75,4 @@ class HabitWidget extends StatelessWidget {
       ],
     ),
   );
-
 }

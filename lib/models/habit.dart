@@ -15,7 +15,7 @@ class Habit {
     required this.createdTime,
     required this.title,
     this.description = '',
-    this.id ='',
+    this.id = '',
     this.isDone = false,
   });
 }
