@@ -30,4 +30,10 @@ class HabitsProvider extends ChangeNotifier {
     ),
   ];
   List<Habit> get habits => _habits.where((habit) => habit.isDone == false).toList();
+
+  void addHabit(Habit habit) {
+    _habits.add(habit);
+
+    notifyListeners();
+  }
 }

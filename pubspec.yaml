@@ -44,7 +44,7 @@ dependencies:
   flutter_native_timezone: ^2.0.0
 
   # state management
-  provider: ^6.0.2
+  provider: ^6.0.3
 
   # slidable
   flutter_slidable: ^0.5.7

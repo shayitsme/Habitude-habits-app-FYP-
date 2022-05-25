@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../models/habit5.dart';
+import '../provider/habits5.dart';
 import 'habit5_form_widget.dart';
 
 class Add5HabitDialogWidget extends StatefulWidget {
@@ -10,13 +13,15 @@ class Add5HabitDialogWidget extends StatefulWidget {
 }
 
 class _Add5HabitDialogWidgetState extends State<Add5HabitDialogWidget> {
-  final _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   String title = '';
   String description = '';
 
   @override
   Widget build(BuildContext context)  => AlertDialog(
-    content: Column(
+    content:  Form(
+      key: _formKey,
+      child: Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -31,12 +36,34 @@ class _Add5HabitDialogWidgetState extends State<Add5HabitDialogWidget> {
         Habit5FormWidget(
           onChangedTitle: (title) => setState(() => this.title = title),
           onChangedDescription: (description) => setState(() => this.description = description),
-          onSavedHabit: () {}, description: '', title: '',
+          onSavedHabit: addHabit5, description: '', title: '',
         ),
 
       ],
     ),
+  ),
   );
 
+  void addHabit5() {
+    final isValid = _formKey.currentState!.validate();
+
+    if (!isValid) {
+      return;
+    } else {
+      final habit5 = Habit5(
+        id: DateTime.now().toString(),
+        title: title,
+        description: description,
+        createdTime: DateTime.now(),
+      );
+      final provider = Provider.of<Habits5Provider>(context, listen: false);
+      provider.addHabit5(habit5);
+
+      Navigator.of(context).pop();
+    }
+  }
 }
+
+
+
 
