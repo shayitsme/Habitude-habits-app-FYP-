@@ -38,4 +38,9 @@ class Habits3Provider extends ChangeNotifier {
 
     notifyListeners();
   }
+  void removeHabit3(Habit3 habit3) {
+    _habits3.remove(habit3);
+
+    notifyListeners();
+  }
 }

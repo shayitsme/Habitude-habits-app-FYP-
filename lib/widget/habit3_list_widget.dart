@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 
 import '../provider/habits.dart';
 
+import '../provider/habits3.dart';
+import 'habit3_widget.dart';
 import 'habit_widget.dart';
 
 
@@ -13,8 +15,8 @@ class Habit3ListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<HabitsProvider>(context);
-    final habits = provider.habits;
+    final provider = Provider.of<Habits3Provider>(context);
+    final habits = provider.habits3;
 
     return habits.isEmpty
         ? Center(
@@ -30,9 +32,9 @@ class Habit3ListWidget extends StatelessWidget {
       separatorBuilder: (context, index) => Container(height: 8),
       itemCount: habits.length,
       itemBuilder: (context, index) {
-        final habit = habits[index];
+        final habit3 = habits[index];
 
-        return HabitWidget(habit: habit);
+        return Habit3Widget(habit: habit3);
       },
     );
   }

@@ -3,6 +3,10 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 
 import 'package:login_with_signup/models/habit6.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/habits6.dart';
+import '../utils.dart';
 
 
 
@@ -79,4 +83,10 @@ class Habit6Widget extends StatelessWidget {
     ),
   );
 
+  void deleteHabit6(BuildContext context, Habit6 habit6) {
+    final provider = Provider.of<Habits6Provider>(context, listen: false);
+    provider.removeHabit6(habit6);
+
+    Utils.showSnackBar(context, 'Habit successfully deleted');
+  }
 }

@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-
-import 'package:login_with_signup/models/habit3.dart';
 import 'package:login_with_signup/models/habit4.dart';
 
 
@@ -36,6 +34,12 @@ class Habits4Provider extends ChangeNotifier {
 
   void addHabit4(Habit4 habit4) {
     _habits4.add(habit4);
+
+    notifyListeners();
+  }
+
+  void removeHabit4(Habit4 habit4) {
+    _habits4.remove(habit4);
 
     notifyListeners();
   }

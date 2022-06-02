@@ -1,7 +1,9 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:login_with_signup/widget/habit5_widget.dart';
 import 'package:provider/provider.dart';
 import '../provider/habits.dart';
+import '../provider/habits5.dart';
 import 'habit_widget.dart';
 
 class Habit5ListWidget extends StatelessWidget {
@@ -9,8 +11,8 @@ class Habit5ListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<HabitsProvider>(context);
-    final habits = provider.habits;
+    final provider = Provider.of<Habits5Provider>(context);
+    final habits = provider.habits5;
 
     return habits.isEmpty
         ? Center(
@@ -26,9 +28,9 @@ class Habit5ListWidget extends StatelessWidget {
       separatorBuilder: (context, index) => Container(height: 8),
       itemCount: habits.length,
       itemBuilder: (context, index) {
-        final habit = habits[index];
+        final habit5 = habits[index];
 
-        return HabitWidget(habit: habit);
+        return Habit5Widget(habit: habit5);
       },
     );
   }

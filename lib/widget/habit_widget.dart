@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:login_with_signup/provider/habits.dart';
+import 'package:provider/provider.dart';
 
 import '../models/habit.dart';
+import '../utils.dart';
 
 
 
@@ -29,7 +32,7 @@ class HabitWidget extends StatelessWidget {
         IconSlideAction(
           color: Colors.red,
           caption: 'Delete',
-          onTap: () {},
+          onTap: () => deleteHabit(context, habit),
           icon: Icons.delete,
         )
       ],
@@ -76,4 +79,11 @@ class HabitWidget extends StatelessWidget {
       ],
     ),
   );
+
+  void deleteHabit(BuildContext context, Habit habit) {
+    final provider = Provider.of<HabitsProvider>(context, listen: false);
+    provider.removeHabit(habit);
+
+    Utils.showSnackBar(context, 'Habit successfully deleted');
+  }
 }

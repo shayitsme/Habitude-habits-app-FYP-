@@ -84,6 +84,7 @@ class _SignupFormState extends State<SignupForm> {
                           hintName: 'User Name',
                           inputType: TextInputType.name,
                           icon: Icons.person_outline),
+
                       SizedBox(height: 5.0),
                       getTextFormField(controller: conEmail,
                           hintName: 'Email',

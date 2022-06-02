@@ -40,4 +40,10 @@ class Habits5Provider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void removeHabit5(Habit5 habit5) {
+    _habits5.remove(habit5);
+
+    notifyListeners();
+  }
 }

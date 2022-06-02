@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:login_with_signup/models/habit5.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/habits5.dart';
+import '../utils.dart';
 
 
 
@@ -80,4 +84,10 @@ class Habit5Widget extends StatelessWidget {
     ),
   );
 
+  void deleteHabit5(BuildContext context, Habit5 habit5) {
+    final provider = Provider.of<Habits5Provider>(context, listen: false);
+    provider.removeHabit5(habit5);
+
+    Utils.showSnackBar(context, 'Habit successfully deleted');
+  }
 }
