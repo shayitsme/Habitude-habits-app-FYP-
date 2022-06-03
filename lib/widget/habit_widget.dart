@@ -50,7 +50,16 @@ class HabitWidget extends StatelessWidget {
           activeColor: Theme.of(context).primaryColor,
           checkColor: Colors.black,
           value: habit.isDone,
-          onChanged: (_) {},
+          onChanged: (_) {
+            final provider = Provider.of<HabitsProvider>(context, listen: false);
+            final isDone = provider.toggleHabitStatus(habit);
+
+            Utils.showSnackBar(
+              context,
+              isDone ? 'Study habit completed' : 'Study habit marked incomplete',
+            );
+
+          },
         ),
         const SizedBox(width: 20),
         Expanded(
@@ -84,6 +93,6 @@ class HabitWidget extends StatelessWidget {
     final provider = Provider.of<HabitsProvider>(context, listen: false);
     provider.removeHabit(habit);
 
-    Utils.showSnackBar(context, 'Habit successfully deleted');
+    Utils.showSnackBar(context, 'Study habit successfully deleted');
   }
 }

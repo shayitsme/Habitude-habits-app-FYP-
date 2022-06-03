@@ -1,22 +1,23 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:login_with_signup/widget/habit2_widget.dart';
 import 'package:provider/provider.dart';
+
 import '../provider/habits2.dart';
-import 'habit2_widget.dart';
 
 
 
-class Habit2ListWidget extends StatelessWidget {
-  const Habit2ListWidget({Key? key}) : super(key: key);
+class Completed2ListWidget extends StatelessWidget {
+  const Completed2ListWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<Habits2Provider>(context);
-    final habits2 = provider.habit2;
+    final habits2 = provider.habits2Completed;
 
     return habits2.isEmpty
         ? Center(
       child: Text(
-        'No meditation habits',
+        'No completed meditation habits',
         style: TextStyle(fontSize: 20),
       ),
     )
@@ -34,5 +35,3 @@ class Habit2ListWidget extends StatelessWidget {
     );
   }
 }
-
-

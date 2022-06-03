@@ -10,10 +10,10 @@ import '../utils.dart';
 
 
 class Habit2Widget extends StatelessWidget {
-  final Habit2 habit;
+  final Habit2 habit2;
 
   const Habit2Widget({
-    Key? key, required this.habit}) : super(key: key);
+    Key? key, required this.habit2}) : super(key: key);
 
   @override
   Widget build(BuildContext context) =>
@@ -21,7 +21,7 @@ class Habit2Widget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: Slidable(
           actionPane: SlidableDrawerActionPane(),
-          key: Key(habit.id),
+          key: Key(habit2.id),
           actions: [
             IconSlideAction(
               color: Colors.green,
@@ -34,7 +34,7 @@ class Habit2Widget extends StatelessWidget {
             IconSlideAction(
               color: Colors.red,
               caption: 'Delete',
-              onTap: () {},
+              onTap: () => deleteHabit(context, habit2),
               icon: Icons.delete,
             )
           ],
@@ -50,10 +50,18 @@ class Habit2Widget extends StatelessWidget {
         child: Row(
           children: [
             Checkbox(
-              activeColor: Colors.amber,
+              activeColor: Colors.brown[400],
               checkColor: Colors.black,
-              value: habit.isDone,
-              onChanged: (_) {},
+              value: habit2.isDone,
+              onChanged: (_) {
+                final provider = Provider.of<Habits2Provider>(context, listen: false);
+                final isDone = provider.toggleHabit2Status(habit2);
+
+                Utils.showSnackBar(
+                  context,
+                  isDone ? 'Meditation habit completed' : 'Meditation habit marked incomplete',
+                );
+              },
             ),
             SizedBox(width: 20),
             Expanded(
@@ -61,18 +69,18 @@ class Habit2Widget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    habit.title,
+                    habit2.title,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.amber,
+                      color: Colors.brown[400],
                       fontSize: 22,
                     ),
                   ),
-                  if (habit.description.isNotEmpty)
+                  if (habit2.description.isNotEmpty)
                     Container(
                       margin: EdgeInsets.only(top: 4),
                       child: Text(
-                        habit.description,
+                        habit2.description,
                         style: TextStyle(fontSize: 20, height: 1.5),
                       ),
                     )
@@ -83,11 +91,11 @@ class Habit2Widget extends StatelessWidget {
         ),
       );
 
-  void deleteHabit2(BuildContext context, Habit2 habit2) {
+  void deleteHabit(BuildContext context, Habit2 habit2) {
     final provider = Provider.of<Habits2Provider>(context, listen: false);
     provider.removeHabit2(habit2);
 
-    Utils.showSnackBar(context, 'Habit successfully deleted');
+    Utils.showSnackBar(context, 'Meditation habit successfully deleted');
   }
 
 }

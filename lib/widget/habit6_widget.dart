@@ -12,16 +12,16 @@ import '../utils.dart';
 
 
 class Habit6Widget extends StatelessWidget {
-  final Habit6 habit;
+  final Habit6 habit6;
   const Habit6Widget({
-    Key? key, required this. habit}) : super(key: key);
+    Key? key, required this. habit6}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child:Slidable(
     actionPane: SlidableDrawerActionPane(),
-    key: Key(habit.id),
+    key: Key(habit6.id),
     actions: [
       IconSlideAction(
         color: Colors.green,
@@ -34,7 +34,7 @@ class Habit6Widget extends StatelessWidget {
       IconSlideAction(
         color: Colors.red,
         caption: 'Delete',
-        onTap: () {},
+        onTap: () => deleteHabit6(context, habit6),
         icon: Icons.delete,
       )
     ],
@@ -52,7 +52,7 @@ class Habit6Widget extends StatelessWidget {
         Checkbox(
           activeColor: Colors. amber,
           checkColor: Colors.black,
-          value: habit. isDone,
+          value: habit6. isDone,
           onChanged: (_) {},
         ),
         SizedBox(width: 20),
@@ -61,18 +61,18 @@ class Habit6Widget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                habit.title,
+                habit6.title,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.amber,
                   fontSize: 22,
                 ),
               ),
-              if (habit.description.isNotEmpty)
+              if (habit6.description.isNotEmpty)
                 Container(
                   margin: EdgeInsets.only(top: 4),
                   child: Text(
-                    habit.description,
+                    habit6.description,
                     style: TextStyle(fontSize: 20, height: 1.5),
                   ),
                 )
@@ -87,6 +87,6 @@ class Habit6Widget extends StatelessWidget {
     final provider = Provider.of<Habits6Provider>(context, listen: false);
     provider.removeHabit6(habit6);
 
-    Utils.showSnackBar(context, 'Habit successfully deleted');
+    Utils.showSnackBar(context, 'Self-improvement habit successfully deleted');
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_with_signup/models/habit.dart';
 import 'package:provider/provider.dart';
-
 import '../provider/habits.dart';
 import 'habit_form_widget.dart';
 

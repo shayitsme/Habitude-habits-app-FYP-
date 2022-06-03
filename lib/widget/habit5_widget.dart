@@ -11,16 +11,16 @@ import '../utils.dart';
 
 
 class Habit5Widget extends StatelessWidget {
-  final Habit5 habit;
+  final Habit5 habit5;
   const Habit5Widget({
-    Key? key, required this. habit}) : super(key: key);
+    Key? key, required this. habit5}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child:Slidable(
     actionPane: SlidableDrawerActionPane(),
-    key: Key(habit.id),
+    key: Key(habit5.id),
     actions: [
       IconSlideAction(
         color: Colors.green,
@@ -33,15 +33,13 @@ class Habit5Widget extends StatelessWidget {
       IconSlideAction(
         color: Colors.red,
         caption: 'Delete',
-        onTap: () {},
+        onTap: () => deleteHabit5(context, habit5),
         icon: Icons.delete,
       )
     ],
     child: buildHabit(context),
   ),
   );
-
-
 
 
 
@@ -53,7 +51,7 @@ class Habit5Widget extends StatelessWidget {
         Checkbox(
           activeColor: Colors. amber,
           checkColor: Colors.black,
-          value: habit. isDone,
+          value: habit5. isDone,
           onChanged: (_) {},
         ),
         SizedBox(width: 20),
@@ -62,18 +60,18 @@ class Habit5Widget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                habit.title,
+                habit5.title,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.amber,
                   fontSize: 22,
                 ),
               ),
-              if (habit.description.isNotEmpty)
+              if (habit5.description.isNotEmpty)
                 Container(
                   margin: EdgeInsets.only(top: 4),
                   child: Text(
-                    habit.description,
+                    habit5.description,
                     style: TextStyle(fontSize: 20, height: 1.5),
                   ),
                 )
@@ -88,6 +86,6 @@ class Habit5Widget extends StatelessWidget {
     final provider = Provider.of<Habits5Provider>(context, listen: false);
     provider.removeHabit5(habit5);
 
-    Utils.showSnackBar(context, 'Habit successfully deleted');
+    Utils.showSnackBar(context, 'Sleep habit successfully deleted');
   }
 }

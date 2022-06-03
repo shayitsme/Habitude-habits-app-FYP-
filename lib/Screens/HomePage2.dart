@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widget/add2_habit_dialog_widget.dart';
+import '../widget/completed2_list_widget.dart';
 import '../widget/habit2_list_widget.dart';
 import 'HomeForm.dart';
 
@@ -17,14 +18,14 @@ class _HomePage2State extends State<HomePage2> {
   Widget build(BuildContext context) {
     final tabs = [
       Habit2ListWidget(),
-      Container(),
+      Completed2ListWidget(),
     ];
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('My meditation habit'),
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.brown[400],
         elevation: 4.0,
         leading: Container(
           padding: EdgeInsets.all(7),
@@ -40,7 +41,7 @@ class _HomePage2State extends State<HomePage2> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.brown[400],
         unselectedItemColor: Colors.white.withOpacity(0.7),
         selectedItemColor: Colors.white,
         currentIndex: selectedIndex,
@@ -59,7 +60,7 @@ class _HomePage2State extends State<HomePage2> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.brown[400],
           onPressed: () => showDialog(
             context: context,
             builder: (context) => Add2HabitDialogWidget(),

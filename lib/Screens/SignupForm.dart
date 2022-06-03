@@ -16,8 +16,6 @@ class SignupForm extends StatefulWidget {
 
 class _SignupFormState extends State<SignupForm> {
   final formKey = new GlobalKey<FormState>();
-  final conUserId = TextEditingController();
-  final conUserName = TextEditingController();
   final conEmail = TextEditingController();
   final conPassword = TextEditingController();
   final conCPassword = TextEditingController();
@@ -30,8 +28,6 @@ class _SignupFormState extends State<SignupForm> {
   }
 
   signUp() async {
-    String uid = conUserId.text;
-    String uname = conUserName.text;
     String email = conEmail.text;
     String passwd = conPassword.text;
     String cpasswd = conCPassword.text;
@@ -44,7 +40,7 @@ class _SignupFormState extends State<SignupForm> {
         else {
           formKey.currentState!.save();
 
-          UserModel uModel = UserModel(uid, uname, email, passwd);
+          UserModel uModel = UserModel(email, passwd);
           await dbHelper.saveData(uModel).then((userData) {
             alertDialog(context, "Successfully Saved");
             Navigator.push(context,
@@ -76,15 +72,6 @@ class _SignupFormState extends State<SignupForm> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       genLoginSignupHeader('Sign Up'),
-                      getTextFormField(controller: conUserId,
-                          hintName: 'User ID',
-                          icon: Icons.person),
-                      SizedBox(height: 5.0),
-                      getTextFormField(controller: conUserName,
-                          hintName: 'User Name',
-                          inputType: TextInputType.name,
-                          icon: Icons.person_outline),
-
                       SizedBox(height: 5.0),
                       getTextFormField(controller: conEmail,
                           hintName: 'Email',

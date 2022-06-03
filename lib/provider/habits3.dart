@@ -9,27 +9,16 @@ class Habits3Provider extends ChangeNotifier {
   List<Habit3> _habits3 = [
     Habit3(
       createdTime: DateTime.now(),
-      title: 'Buy some meat',
-      description: '''- Eggs
-- Milk
-- Bread
-- Water''',
+      title: 'Did not skip breakfast',
+      description: ''' - Ate before 8.30am
+      ''',
     ),
     Habit3(
       createdTime: DateTime.now(),
-      title: 'Plan family trip to Norway',
-      description: '''- Rent some hotels
-- Rent a car
-- Pack suitcase''',
+      title: 'Eat a healthy meal today',
+      description: '''- Well balanced meal of carbs, protein and fibre''',
     ),
-    Habit3(
-      createdTime: DateTime.now(),
-      title: 'Walk the Dog 🐕',
-    ),
-    Habit3(
-      createdTime: DateTime.now(),
-      title: 'Plan Jacobs birthday party 🎉🥳',
-    ),
+
   ];
   List<Habit3> get habits3 => _habits3.where((habit3) => habit3.isDone == false).toList();
 

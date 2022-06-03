@@ -36,19 +36,19 @@ class _LoginFormState extends State<LoginForm> {
     } else if(passwd.isEmpty) {
       alertDialog(context, "Please enter password");
     } else{
-       await dbHelper.getLoginUser(email, passwd).then((userData) {
-         if (userData != null) {
-         Navigator.pushAndRemoveUntil(context,
-             MaterialPageRoute(builder: (_) => HomeForm()),
-                 (Route<dynamic> route) => false);
-       } else {
-         alertDialog(context, "Error: User not found");
-         }
+      await dbHelper.getLoginUser(email, passwd).then((userData) {
+        if (userData != null) {
+          Navigator.pushAndRemoveUntil(context,
+              MaterialPageRoute(builder: (_) => HomeForm()),
+                  (Route<dynamic> route) => false);
+        } else {
+          alertDialog(context, "Error: User not found");
+        }
 
-       }).catchError((error){
-         print(error);
-         alertDialog(context, "Error: Login Fail");
-       });
+      }).catchError((error){
+        print(error);
+        alertDialog(context, "Error: Login Fail");
+      });
     }
   }
 
@@ -56,10 +56,7 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     ToastContext().init(context);
     return Scaffold(
-      appBar: AppBar(
 
-        automaticallyImplyLeading: false,
-      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
@@ -120,6 +117,8 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 }
+
+
 
 
 

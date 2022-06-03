@@ -12,8 +12,6 @@ class DbHelper {
   static const String Table_User = 'user';
   static const int Version = 1;
 
-  static const String C_UserID = 'user_id';
-  static const String C_UserName = 'user_name';
   static const String C_Email = 'email';
   static const String C_Password = 'password';
 
@@ -33,11 +31,9 @@ class DbHelper {
 
   _onCreate(Database db, int intVersion) async {
     await db.execute("CREATE TABLE $Table_User ("
-        " $C_UserID TEXT, "
-        " $C_UserName TEXT, "
         " $C_Email TEXT,"
         " $C_Password TEXT, "
-        " PRIMARY KEY ($C_UserID)"
+        " PRIMARY KEY ($C_Email)"
         ")");
   }
 

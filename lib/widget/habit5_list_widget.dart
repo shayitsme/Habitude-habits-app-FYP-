@@ -30,7 +30,7 @@ class Habit5ListWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final habit5 = habits[index];
 
-        return Habit5Widget(habit: habit5);
+        return Habit5Widget(habit5: habit5);
       },
     );
   }

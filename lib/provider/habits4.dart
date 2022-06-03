@@ -8,26 +8,13 @@ class Habits4Provider extends ChangeNotifier {
   List<Habit4> _habits4 = [
     Habit4(
       createdTime: DateTime.now(),
-      title: 'Buy some meat',
-      description: '''- Eggs
-- Milk
-- Bread
-- Water''',
+      title: 'Exercised for 30 minutes today',
+      description: '''- Watch favourite trainer on Youtube''',
     ),
     Habit4(
       createdTime: DateTime.now(),
-      title: 'Plan family trip to Norway',
-      description: '''- Rent some hotels
-- Rent a car
-- Pack suitcase''',
-    ),
-    Habit4(
-      createdTime: DateTime.now(),
-      title: 'Walk the Dog 🐕',
-    ),
-    Habit4(
-      createdTime: DateTime.now(),
-      title: 'Plan Jacobs birthday party 🎉🥳',
+      title: 'Do some running/ walking today',
+      description: ''' ''',
     ),
   ];
   List<Habit4> get habits4 => _habits4.where((habit4) => habit4.isDone == false).toList();

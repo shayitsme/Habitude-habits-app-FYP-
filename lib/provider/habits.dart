@@ -7,29 +7,24 @@ class HabitsProvider extends ChangeNotifier {
   List<Habit> _habits = [
     Habit(
         createdTime: DateTime.now(),
-        title: 'Buy some food',
-  description: '''- Eggs
-- Milk
-- Bread
-- Water''',
+        title: "Do my homework",
+  description: '''- All my subjects
+- Economics
+- Coding
+- Accounting''',
   ),
   Habit(
   createdTime: DateTime.now(),
-  title: 'Plan family trip to Norway',
-  description: '''- Rent some hotels
-- Rent a car
-- Pack suitcase''',
+  title: 'Study for 2 hours today',
+  description: '''- Break every 30 minutes
+  - Do not use the phone while studying
+''',
   ),
-    Habit(
-      createdTime: DateTime.now(),
-      title: 'Walk the Dog 🐕',
-    ),
-    Habit(
-      createdTime: DateTime.now(),
-      title: 'Plan Jacobs birthday party 🎉🥳',
-    ),
   ];
   List<Habit> get habits => _habits.where((habit) => habit.isDone == false).toList();
+
+  List<Habit> get habitsCompleted =>
+      _habits.where((habit) => habit.isDone == true).toList();
 
   void addHabit(Habit habit) {
     _habits.add(habit);
@@ -41,4 +36,11 @@ class HabitsProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+  bool toggleHabitStatus(Habit habit) {
+    habit.isDone = !habit.isDone;
+    notifyListeners();
+
+    return habit.isDone;
+  }
+
 }

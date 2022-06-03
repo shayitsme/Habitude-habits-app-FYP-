@@ -17,7 +17,7 @@ class HabitListWidget extends StatelessWidget {
     return habits.isEmpty
         ? Center(
       child: Text(
-        'No habits',
+        'No study habits',
         style: TextStyle(fontSize: 20),
       ),
     )

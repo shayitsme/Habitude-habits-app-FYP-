@@ -11,16 +11,16 @@ import '../utils.dart';
 
 
 class Habit3Widget extends StatelessWidget {
-  final Habit3 habit;
+  final Habit3 habit3;
   const Habit3Widget({
-    Key? key, required this. habit}) : super(key: key);
+    Key? key, required this. habit3}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child:Slidable(
     actionPane: SlidableDrawerActionPane(),
-    key: Key(habit.id),
+    key: Key(habit3.id),
     actions: [
       IconSlideAction(
         color: Colors.green,
@@ -33,7 +33,7 @@ class Habit3Widget extends StatelessWidget {
       IconSlideAction(
         color: Colors.red,
         caption: 'Delete',
-        onTap: () {},
+        onTap: () => deleteHabit3(context, habit3),
         icon: Icons.delete,
       )
     ],
@@ -51,7 +51,7 @@ class Habit3Widget extends StatelessWidget {
         Checkbox(
           activeColor: Colors. amber,
           checkColor: Colors.black,
-          value: habit. isDone,
+          value: habit3. isDone,
           onChanged: (_) {},
         ),
         SizedBox(width: 20),
@@ -60,18 +60,18 @@ class Habit3Widget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                habit.title,
+                habit3.title,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.amber,
                   fontSize: 22,
                 ),
               ),
-              if (habit.description.isNotEmpty)
+              if (habit3.description.isNotEmpty)
                 Container(
                   margin: EdgeInsets.only(top: 4),
                   child: Text(
-                    habit.description,
+                    habit3.description,
                     style: TextStyle(fontSize: 20, height: 1.5),
                   ),
                 )
@@ -86,7 +86,7 @@ class Habit3Widget extends StatelessWidget {
     final provider = Provider.of<Habits3Provider>(context, listen: false);
     provider.removeHabit3(habit3);
 
-    Utils.showSnackBar(context, 'Habit successfully deleted');
+    Utils.showSnackBar(context, 'Diet habit successfully deleted');
   }
 
 }

@@ -47,12 +47,12 @@ class _HomeFormState extends State<HomeForm> {
                 Navigator.push(context,
                     MaterialPageRoute(builder:(_)=> HomePage()));
               },
-              splashColor: Colors.amber,
+              splashColor: Colors.brown,
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: const <Widget>[
-                    Icon(Icons.school, size: 75, color: Colors.amber,),
+                    Icon(Icons.school, size: 75, color: Colors.amber),
                     Text("Study", style: TextStyle(fontSize: 17.0)),
                   ],
                 ),
@@ -66,12 +66,12 @@ class _HomeFormState extends State<HomeForm> {
                 Navigator.push(context,
                     MaterialPageRoute(builder:(_)=> HomePage2()));
               },
-              splashColor: Colors.amber,
+              splashColor: Colors.brown,
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: const <Widget>[
-                    Icon(Icons.self_improvement, size: 75, color: Colors.amber,),
+                  children: <Widget>[
+                    Icon(Icons.self_improvement, size: 75, color: Colors.brown[400]),
                     Text("Meditation", style: TextStyle(fontSize: 17.0)),
                   ],
                 ),
@@ -85,12 +85,12 @@ class _HomeFormState extends State<HomeForm> {
                 Navigator.push(context,
                     MaterialPageRoute(builder:(_)=> HomePage3()));
               },
-              splashColor: Colors.amber,
+              splashColor: Colors.brown,
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: const <Widget>[
-                    Icon(Icons.food_bank, size: 75, color: Colors.amber,),
+                  children: <Widget>[
+                    Icon(Icons.food_bank, size: 75, color: Colors.brown[400]),
                     Text("Daily Diet", style: TextStyle(fontSize: 17.0)),
                   ],
                 ),
@@ -104,12 +104,12 @@ class _HomeFormState extends State<HomeForm> {
                 Navigator.push(context,
                     MaterialPageRoute(builder:(_)=> HomePage4()));
               },
-              splashColor: Colors.amber,
+              splashColor: Colors.brown,
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: const <Widget>[
-                    Icon(Icons.fitness_center, size: 75, color: Colors.amber,),
+                    Icon(Icons.fitness_center, size: 75, color: Colors.amber),
                     Text("Exercise", style: TextStyle(fontSize: 17.0)),
                   ],
                 ),
@@ -123,12 +123,12 @@ class _HomeFormState extends State<HomeForm> {
                 Navigator.push(context,
                     MaterialPageRoute(builder:(_)=> HomePage5()));
               },
-              splashColor: Colors.amber,
+              splashColor: Colors.brown,
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: const <Widget>[
-                    Icon(Icons.bedtime, size: 75, color: Colors.amber,),
+                    Icon(Icons.bedtime, size: 75, color: Colors.amber),
                     Text("Sleep", style: TextStyle(fontSize: 17.0)),
                   ],
                 ),
@@ -142,12 +142,12 @@ class _HomeFormState extends State<HomeForm> {
                 Navigator.push(context,
                     MaterialPageRoute(builder:(_)=> HomePage6()));
               },
-              splashColor: Colors.amber,
+              splashColor: Colors.brown,
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: const <Widget>[
-                    Icon(Icons.emoji_people, size: 75, color: Colors.amber,),
+                  children: <Widget>[
+                    Icon(Icons.emoji_people, size: 75, color: Colors.brown[400]),
                     Text("Self-Improvement", style: TextStyle(fontSize: 17.0)),
                   ],
                 ),

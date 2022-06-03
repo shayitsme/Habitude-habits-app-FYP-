@@ -9,26 +9,15 @@ class Habits6Provider extends ChangeNotifier {
   List<Habit6> _habits6 = [
     Habit6(
       createdTime: DateTime.now(),
-      title: 'Buy some meat',
-      description: '''- Eggs
-- Milk
-- Bread
-- Water''',
+      title: 'I want to stop procrastinating',
+      description: '''- Read 5 pages everyday to stop procrastination''',
     ),
     Habit6(
       createdTime: DateTime.now(),
-      title: 'Plan family trip to Norway',
-      description: '''- Rent some hotels
-- Rent a car
-- Pack suitcase''',
-    ),
-    Habit6(
-      createdTime: DateTime.now(),
-      title: 'Walk the Dog 🐕',
-    ),
-    Habit6(
-      createdTime: DateTime.now(),
-      title: 'Plan Jacobs birthday party 🎉🥳',
+      title: 'I want to stop playing video games every hour',
+      description: '''- Play only for 2 hours a day
+- Substitute gaming with active video learning
+''',
     ),
   ];
   List<Habit6> get habits6 => _habits6.where((habit6) => habit6.isDone == false).toList();
