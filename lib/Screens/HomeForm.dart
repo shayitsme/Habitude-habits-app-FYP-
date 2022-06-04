@@ -28,6 +28,12 @@ class _HomeFormState extends State<HomeForm> {
           child: Image.asset("assets/images/logo.jpg"),
         ),
         actions: [
+          IconButton(icon: Icon(Icons.scale_outlined),
+            onPressed: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder:(_)=> LoginForm()))
+            },
+          ),
           IconButton(icon: Icon(Icons.logout),
             onPressed: () => {
               Navigator.push(context,
@@ -154,8 +160,8 @@ class _HomeFormState extends State<HomeForm> {
               ),
             ),
           ),
-        ],
-      ),
+      ]
+    ),
     );
   }
 }

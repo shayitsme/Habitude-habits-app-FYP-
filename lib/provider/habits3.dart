@@ -20,16 +20,29 @@ class Habits3Provider extends ChangeNotifier {
     ),
 
   ];
-  List<Habit3> get habits3 => _habits3.where((habit3) => habit3.isDone == false).toList();
+
+  List<Habit3> get habits3 =>
+      _habits3.where((habit3) => habit3.isDone == false).toList();
+
+  List<Habit3> get habits3Completed =>
+      _habits3.where((habit3) => habit3.isDone == true).toList();
 
   void addHabit3(Habit3 habit3) {
     _habits3.add(habit3);
 
     notifyListeners();
   }
+
   void removeHabit3(Habit3 habit3) {
     _habits3.remove(habit3);
 
     notifyListeners();
+  }
+
+  bool toggleHabit3Status(Habit3 habit3) {
+    habit3.isDone = !habit3.isDone;
+    notifyListeners();
+
+    return habit3.isDone;
   }
 }

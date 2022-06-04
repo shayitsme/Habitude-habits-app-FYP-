@@ -17,7 +17,12 @@ class Habits4Provider extends ChangeNotifier {
       description: ''' ''',
     ),
   ];
-  List<Habit4> get habits4 => _habits4.where((habit4) => habit4.isDone == false).toList();
+
+  List<Habit4> get habits4 =>
+      _habits4.where((habit4) => habit4.isDone == false).toList();
+
+  List<Habit4> get habits4Completed =>
+      _habits4.where((habit4) => habit4.isDone == true).toList();
 
   void addHabit4(Habit4 habit4) {
     _habits4.add(habit4);
@@ -29,5 +34,12 @@ class Habits4Provider extends ChangeNotifier {
     _habits4.remove(habit4);
 
     notifyListeners();
+  }
+
+  bool toggleHabit4Status(Habit4 habit4) {
+    habit4.isDone = !habit4.isDone;
+    notifyListeners();
+
+    return habit4.isDone;
   }
 }

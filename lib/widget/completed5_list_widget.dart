@@ -1,23 +1,22 @@
-
-import 'package:flutter/cupertino.dart';
-import 'package:login_with_signup/widget/habit5_widget.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../provider/habits.dart';
 import '../provider/habits5.dart';
-import 'habit_widget.dart';
+import 'habit5_widget.dart';
 
-class Habit5ListWidget extends StatelessWidget {
-  const Habit5ListWidget({Key? key}) : super(key: key);
+
+
+class Completed5ListWidget extends StatelessWidget {
+  const Completed5ListWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<Habits5Provider>(context);
-    final habits = provider.habits5;
+    final habits5 = provider.habits5Completed;
 
-    return habits.isEmpty
+    return habits5.isEmpty
         ? Center(
       child: Text(
-        'No sleep habits',
+        'No completed sleep habits',
         style: TextStyle(fontSize: 20),
       ),
     )
@@ -26,13 +25,12 @@ class Habit5ListWidget extends StatelessWidget {
       physics: BouncingScrollPhysics(),
       padding: EdgeInsets.all(16),
       separatorBuilder: (context, index) => Container(height: 8),
-      itemCount: habits.length,
+      itemCount: habits5.length,
       itemBuilder: (context, index) {
-        final habit5 = habits[index];
+        final habit5 = habits5[index];
 
         return Habit5Widget(habit5: habit5);
       },
     );
   }
 }
-

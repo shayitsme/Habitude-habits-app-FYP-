@@ -20,7 +20,9 @@ class Habits2Provider extends ChangeNotifier {
     ),
 
   ];
-  List<Habit2> get habit2 => _habits2.where((habit2) => habit2.isDone == false).toList();
+
+  List<Habit2> get habit2 =>
+      _habits2.where((habit2) => habit2.isDone == false).toList();
 
   List<Habit2> get habits2Completed =>
       _habits2.where((habit2) => habit2.isDone == true).toList();
@@ -30,16 +32,18 @@ class Habits2Provider extends ChangeNotifier {
 
     notifyListeners();
   }
-  bool toggleHabit2Status(Habit2 habit2) {
-    habit2.isDone = !habit2.isDone;
-    notifyListeners();
 
-    return habit2.isDone;
-  }
 
   void removeHabit2(Habit2 habit2) {
     _habits2.remove(habit2);
 
     notifyListeners();
+  }
+
+  bool toggleHabit2Status(Habit2 habit2) {
+    habit2.isDone = !habit2.isDone;
+    notifyListeners();
+
+    return habit2.isDone;
   }
 }

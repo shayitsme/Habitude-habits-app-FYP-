@@ -52,7 +52,15 @@ class Habit3Widget extends StatelessWidget {
           activeColor: Colors. amber,
           checkColor: Colors.black,
           value: habit3. isDone,
-          onChanged: (_) {},
+          onChanged: (_) {
+            final provider = Provider.of<Habits3Provider>(context, listen: false);
+            final isDone = provider.toggleHabit3Status(habit3);
+
+            Utils.showSnackBar(
+              context,
+              isDone ? 'Diet habit completed' : 'Diet habit marked incomplete',
+            );
+          },
         ),
         SizedBox(width: 20),
         Expanded(

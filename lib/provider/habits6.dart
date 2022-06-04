@@ -20,7 +20,12 @@ class Habits6Provider extends ChangeNotifier {
 ''',
     ),
   ];
-  List<Habit6> get habits6 => _habits6.where((habit6) => habit6.isDone == false).toList();
+
+  List<Habit6> get habits6 =>
+      _habits6.where((habit6) => habit6.isDone == false).toList();
+
+  List<Habit6> get habits6Completed =>
+      _habits6.where((habit6) => habit6.isDone == true).toList();
 
   void addHabit6(Habit6 habit6) {
     _habits6.add(habit6);
@@ -33,4 +38,10 @@ class Habits6Provider extends ChangeNotifier {
 
     notifyListeners();
   }
+  bool toggleHabit6Status(Habit6 habit6) {
+    habit6.isDone = !habit6.isDone;
+    notifyListeners();
+
+    return habit6.isDone;
+}
 }

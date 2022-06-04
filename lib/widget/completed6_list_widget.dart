@@ -1,24 +1,22 @@
-
-import 'package:flutter/cupertino.dart';
-import 'package:login_with_signup/widget/habit6_widget.dart';
-
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/habits6.dart';
+import 'habit6_widget.dart';
 
 
 
-class Habit6ListWidget extends StatelessWidget {
-  const Habit6ListWidget({Key? key}) : super(key: key);
+class Completed6ListWidget extends StatelessWidget {
+  const Completed6ListWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<Habits6Provider>(context);
-    final habits = provider.habits6;
+    final habits6 = provider.habits6Completed;
 
-    return habits.isEmpty
+    return habits6.isEmpty
         ? Center(
       child: Text(
-        'No self-improvement habits',
+        'No completed self-improvement habits',
         style: TextStyle(fontSize: 20),
       ),
     )
@@ -27,13 +25,12 @@ class Habit6ListWidget extends StatelessWidget {
       physics: BouncingScrollPhysics(),
       padding: EdgeInsets.all(16),
       separatorBuilder: (context, index) => Container(height: 8),
-      itemCount: habits.length,
+      itemCount: habits6.length,
       itemBuilder: (context, index) {
-        final habit6 = habits[index];
+        final habit6 = habits6[index];
 
         return Habit6Widget(habit6: habit6);
       },
     );
   }
 }
-

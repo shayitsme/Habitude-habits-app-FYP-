@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widget/add3_habit_dialog_widget.dart';
+import '../widget/completed3_list_widget.dart';
 import '../widget/habit3_list_widget.dart';
 import 'HomeForm.dart';
 
@@ -17,7 +18,7 @@ class _HomePage3State extends State<HomePage3> {
   Widget build(BuildContext context) {
     final tabs = [
       Habit3ListWidget(),
-      Container(),
+      Completed3ListWidget(),
     ];
     return Scaffold(
       appBar: AppBar(

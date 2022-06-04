@@ -1,27 +1,22 @@
-import 'package:flutter/cupertino.dart';
-
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-
-import '../provider/habits.dart';
-
 import '../provider/habits3.dart';
 import 'habit3_widget.dart';
-import 'habit_widget.dart';
 
 
-class Habit3ListWidget extends StatelessWidget {
-  const Habit3ListWidget({Key? key}) : super(key: key);
+
+class Completed3ListWidget extends StatelessWidget {
+  const Completed3ListWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<Habits3Provider>(context);
-    final habits = provider.habits3;
+    final habits3 = provider.habits3Completed;
 
-    return habits.isEmpty
+    return habits3.isEmpty
         ? Center(
       child: Text(
-        'No diet habits',
+        'No completed diet habits',
         style: TextStyle(fontSize: 20),
       ),
     )
@@ -30,14 +25,12 @@ class Habit3ListWidget extends StatelessWidget {
       physics: BouncingScrollPhysics(),
       padding: EdgeInsets.all(16),
       separatorBuilder: (context, index) => Container(height: 8),
-      itemCount: habits.length,
+      itemCount: habits3.length,
       itemBuilder: (context, index) {
-        final habit3 = habits[index];
+        final habit3 = habits3[index];
 
         return Habit3Widget(habit3: habit3);
       },
     );
   }
 }
-
-

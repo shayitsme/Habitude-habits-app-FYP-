@@ -20,7 +20,12 @@ class Habits5Provider extends ChangeNotifier {
       description: '''- Had an uninterrupted sleep''',
     ),
   ];
-  List<Habit5> get habits5 => _habits5.where((habit5) => habit5.isDone == false).toList();
+
+  List<Habit5> get habits5 =>
+      _habits5.where((habit5) => habit5.isDone == false).toList();
+
+  List<Habit5> get habits5Completed =>
+      _habits5.where((habit5) => habit5.isDone == true).toList();
 
   void addHabit5(Habit5 habit5) {
     _habits5.add(habit5);
@@ -33,4 +38,10 @@ class Habits5Provider extends ChangeNotifier {
 
     notifyListeners();
   }
+  bool toggleHabit5Status(Habit5 habit5) {
+    habit5.isDone = !habit5.isDone;
+    notifyListeners();
+
+    return habit5.isDone;
+}
 }

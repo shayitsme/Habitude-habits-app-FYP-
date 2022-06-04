@@ -53,7 +53,15 @@ class Habit4Widget extends StatelessWidget {
           activeColor: Colors. amber,
           checkColor: Colors.black,
           value: habit4. isDone,
-          onChanged: (_) {},
+          onChanged: (_) {
+            final provider = Provider.of<Habits4Provider>(context, listen: false);
+            final isDone = provider.toggleHabit4Status(habit4);
+
+            Utils.showSnackBar(
+              context,
+              isDone ? 'Exercise habit completed' : 'Exercise habit marked incomplete',
+            );
+          },
         ),
         SizedBox(width: 20),
         Expanded(
