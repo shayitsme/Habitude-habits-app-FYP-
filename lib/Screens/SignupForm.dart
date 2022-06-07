@@ -59,7 +59,8 @@ class _SignupFormState extends State<SignupForm> {
     ToastContext().init(context);
       return Scaffold(
         appBar: AppBar(
-
+          backgroundColor: Colors.white,
+          elevation: 0,
           automaticallyImplyLeading: false,
         ),
         body: Form(

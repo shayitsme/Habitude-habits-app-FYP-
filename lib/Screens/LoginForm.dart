@@ -5,6 +5,7 @@ import 'package:login_with_signup/Screens/SignupForm.dart';
 import 'package:toast/toast.dart';
 import '../Comm/genLoginSignupHeader.dart';
 import '../DatabaseHandler/DbHelper.dart';
+import '../customAppBar.dart';
 import 'HomeForm.dart';
 
 class LoginForm extends StatefulWidget {
@@ -56,7 +57,16 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     ToastContext().init(context);
     return Scaffold(
+      appBar: PreferredSize(
+          child: ClipPath(
+            clipper: CustomAppBar(),
+            child: Container(color: Colors.amber[400], child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              Text('Hello!', style: TextStyle(color: Colors.black, fontSize: 40, fontWeight: FontWeight.bold),),
+              Text('Welcome back to Habitude', style: TextStyle(color: Colors.brown[500], fontSize: 20, fontStyle: FontStyle.italic),),
 
+            ],),),
+          ),
+          preferredSize: Size.fromHeight(kToolbarHeight + 100)),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
