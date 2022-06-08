@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:login_with_signup/models/habit5.dart';
 import 'package:provider/provider.dart';
 
+import '../Screens/edit_habit5_page.dart';
 import '../provider/habits5.dart';
 import '../utils.dart';
 
@@ -24,7 +25,7 @@ class Habit5Widget extends StatelessWidget {
     actions: [
       IconSlideAction(
         color: Colors.green,
-        onTap: () {},
+        onTap: () => editHabit5(context, habit5),
         caption: 'Edit',
         icon: Icons.edit,
       )
@@ -96,4 +97,8 @@ class Habit5Widget extends StatelessWidget {
 
     Utils.showSnackBar(context, 'Sleep habit successfully deleted');
   }
+  void editHabit5(BuildContext context, Habit5 habit5) => Navigator.of(context).push(
+    MaterialPageRoute(builder: (context) => EditHabit5Page(habit5: habit5),
+    ),
+  );
 }

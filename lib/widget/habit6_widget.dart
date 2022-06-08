@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-
-
 import 'package:login_with_signup/models/habit6.dart';
 import 'package:provider/provider.dart';
 
+import '../Screens/edit_habit6_page.dart';
 import '../provider/habits6.dart';
 import '../utils.dart';
 
@@ -25,7 +24,7 @@ class Habit6Widget extends StatelessWidget {
     actions: [
       IconSlideAction(
         color: Colors.green,
-        onTap: () {},
+        onTap: () => editHabit6(context, habit6),
         caption: 'Edit',
         icon: Icons.edit,
       )
@@ -50,7 +49,7 @@ class Habit6Widget extends StatelessWidget {
     child: Row(
       children: [
         Checkbox(
-          activeColor: Colors. amber,
+          activeColor: Colors. brown[400],
           checkColor: Colors.black,
           value: habit6. isDone,
           onChanged: (_) {
@@ -72,7 +71,7 @@ class Habit6Widget extends StatelessWidget {
                 habit6.title,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.amber,
+                  color: Colors.brown[400],
                   fontSize: 22,
                 ),
               ),
@@ -97,4 +96,8 @@ class Habit6Widget extends StatelessWidget {
 
     Utils.showSnackBar(context, 'Self-improvement habit successfully deleted');
   }
+  void editHabit6(BuildContext context, Habit6 habit6) => Navigator.of(context).push(
+    MaterialPageRoute(builder: (context) => EditHabit6Page(habit6: habit6),
+    ),
+  );
 }

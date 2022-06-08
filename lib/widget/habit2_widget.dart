@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:login_with_signup/models/habit2.dart';
 import 'package:provider/provider.dart';
 
+import '../Screens/edit_habit2_page.dart';
 import '../provider/habits2.dart';
 import '../utils.dart';
 
@@ -25,7 +26,7 @@ class Habit2Widget extends StatelessWidget {
           actions: [
             IconSlideAction(
               color: Colors.green,
-              onTap: () {},
+              onTap: () => editHabit2(context, habit2),
               caption: 'Edit',
               icon: Icons.edit,
             )
@@ -97,7 +98,10 @@ class Habit2Widget extends StatelessWidget {
 
     Utils.showSnackBar(context, 'Meditation habit successfully deleted');
   }
-
+  void editHabit2(BuildContext context, Habit2 habit2) => Navigator.of(context).push(
+    MaterialPageRoute(builder: (context) => EditHabit2Page(habit2: habit2),
+    ),
+  );
 }
 
 

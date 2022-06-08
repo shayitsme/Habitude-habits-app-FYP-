@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:login_with_signup/models/habit3.dart';
 import 'package:provider/provider.dart';
 
+import '../Screens/edit_habit3_page.dart';
 import '../provider/habits3.dart';
 import '../utils.dart';
 
@@ -24,7 +25,7 @@ class Habit3Widget extends StatelessWidget {
     actions: [
       IconSlideAction(
         color: Colors.green,
-        onTap: () {},
+        onTap: () => editHabit3(context, habit3),
         caption: 'Edit',
         icon: Icons.edit,
       )
@@ -49,7 +50,7 @@ class Habit3Widget extends StatelessWidget {
     child: Row(
       children: [
         Checkbox(
-          activeColor: Colors. amber,
+          activeColor: Colors. brown[400],
           checkColor: Colors.black,
           value: habit3. isDone,
           onChanged: (_) {
@@ -71,7 +72,7 @@ class Habit3Widget extends StatelessWidget {
                 habit3.title,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.amber,
+                  color: Colors.brown[400],
                   fontSize: 22,
                 ),
               ),
@@ -96,5 +97,8 @@ class Habit3Widget extends StatelessWidget {
 
     Utils.showSnackBar(context, 'Diet habit successfully deleted');
   }
-
+  void editHabit3(BuildContext context, Habit3 habit3) => Navigator.of(context).push(
+    MaterialPageRoute(builder: (context) => EditHabit3Page(habit3: habit3),
+    ),
+  );
 }

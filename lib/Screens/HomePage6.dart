@@ -25,7 +25,7 @@ class _HomePage6State extends State<HomePage6> {
         centerTitle: true,
         title: Text('My self habit'),
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.brown[400],
         elevation: 4.0,
         leading: Container(
           padding: EdgeInsets.all(7),
@@ -41,7 +41,7 @@ class _HomePage6State extends State<HomePage6> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.brown[400],
         unselectedItemColor: Colors.white.withOpacity(0.7),
         selectedItemColor: Colors.white,
         currentIndex: selectedIndex,
@@ -60,7 +60,7 @@ class _HomePage6State extends State<HomePage6> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.brown[400],
         onPressed: ()  => showDialog(
           context: context,
           builder: (context) => Add6HabitDialogWidget(),
