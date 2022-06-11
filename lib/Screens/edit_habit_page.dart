@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_with_signup/widget/habit_form_widget.dart';
 import 'package:provider/provider.dart';
-
 import '../models/habit.dart';
 
 class EditHabitPage extends StatefulWidget {

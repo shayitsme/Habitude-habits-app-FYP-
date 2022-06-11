@@ -25,8 +25,6 @@ class HabitFormWidget extends StatelessWidget {
            buildTitle(),
             SizedBox(height: 8),
             buildDescription(),
-            SizedBox(height: 8),
-            buildDate(),
             SizedBox(height: 32),
             buildButton(),
           ]

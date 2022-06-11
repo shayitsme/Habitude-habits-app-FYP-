@@ -9,6 +9,8 @@ import 'package:login_with_signup/provider/habits5.dart';
 import 'package:login_with_signup/provider/habits6.dart';
 import 'package:provider/provider.dart';
 
+import 'Screens/Splash.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.amber,
         ),
-        home: const LoginForm(),
+        home: const Splash(),
       ));
 }
 
