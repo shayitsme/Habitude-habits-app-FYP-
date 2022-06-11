@@ -29,7 +29,7 @@ class _SplashState extends State<Splash> {
             Image.asset("assets/images/logo.jpg", height: 250,),
             SizedBox(height: 30,),
             CircularProgressIndicator(
-              color: Colors.black,
+              color: Colors.amber,
             )
           ],
         ),
