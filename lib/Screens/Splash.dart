@@ -27,9 +27,18 @@ class _SplashState extends State<Splash> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset("assets/images/logo.jpg", height: 250,),
+            Text(
+              "Habitude",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 30.0,
+              ),
+            ),
             SizedBox(height: 30,),
             CircularProgressIndicator(
-              color: Colors.amber,
+              color: Colors.white,
             )
           ],
         ),
@@ -37,6 +46,3 @@ class _SplashState extends State<Splash> {
     );
   }
 }
-
-
-
