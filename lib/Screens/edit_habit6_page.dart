@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/habit6.dart';
+import '../provider/habits6.dart';
 import '../widget/habit2_form_widget.dart';
 
 class EditHabit6Page extends StatefulWidget {
@@ -35,13 +36,29 @@ class _EditHabit6PageState extends State<EditHabit6Page> {
           ),
           body: Padding(
             padding: EdgeInsets.all(16),
-            child: Habit2FormWidget(
+            child: Form(
+  key: _formKey,
+  child:Habit2FormWidget(
               title: title,
               description: description,
               onChangedTitle: (title) => setState(() => this.title = title),
               onChangedDescription: (description) =>
                   setState(() => this.description = description),
-              onSavedHabit: () {},
+              onSavedHabit: saveHabit6,
             ),
-          ));
+          )));
+
+  void saveHabit6() {
+    final isValid = _formKey.currentState!.validate();
+
+    if (!isValid) {
+      return;
+    } else {
+      final provider = Provider.of<Habits6Provider>(context, listen: false);
+
+      provider.updateHabit6(widget.habit6, title, description);
+
+      Navigator.of(context).pop();
+    }
+  }
 }

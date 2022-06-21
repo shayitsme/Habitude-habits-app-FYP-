@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_with_signup/provider/habits.dart';
 import 'package:login_with_signup/widget/habit_form_widget.dart';
 import 'package:provider/provider.dart';
 import '../models/habit.dart';
@@ -29,19 +30,37 @@ class _EditHabitPageState extends State<EditHabitPage> {
   @override
   Widget build(BuildContext context) =>
       Scaffold(
-          appBar: AppBar(
-            title: Text('Edit Habit'),
-          ),
-            body: Padding(
-  padding: EdgeInsets.all(16),
+        appBar: AppBar(
+          title: Text('Edit Habit'),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(16),
+          child: Form(
+            key: _formKey,
             child: HabitFormWidget(
               title: title,
               description: description,
               onChangedTitle: (title) => setState(() => this.title = title),
               onChangedDescription: (description) =>
                   setState(() => this.description = description),
-              onSavedHabit: () {},
+              onSavedHabit: saveHabit,
             ),
-          ));
-      }
+          ),
+        ),
+      );
 
+  void saveHabit() {
+    final isValid = _formKey.currentState!.validate();
+
+    if (!isValid) {
+      return;
+    } else {
+      final provider = Provider.of<HabitsProvider>(context, listen: false);
+
+      provider.updateHabit(widget.habit, title, description);
+
+      Navigator.of(context).pop();
+    }
+  }
+
+}

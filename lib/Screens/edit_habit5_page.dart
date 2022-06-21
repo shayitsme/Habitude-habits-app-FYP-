@@ -3,6 +3,7 @@ import 'package:login_with_signup/widget/habit_form_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../models/habit5.dart';
+import '../provider/habits5.dart';
 
 class EditHabit5Page extends StatefulWidget {
   final Habit5 habit5;
@@ -35,14 +36,30 @@ class _EditHabit5PageState extends State<EditHabit5Page> {
           ),
           body: Padding(
             padding: EdgeInsets.all(16),
-            child: HabitFormWidget(
+            child: Form(
+  key: _formKey,
+  child:HabitFormWidget(
               title: title,
               description: description,
               onChangedTitle: (title) => setState(() => this.title = title),
               onChangedDescription: (description) =>
                   setState(() => this.description = description),
-              onSavedHabit: () {},
+              onSavedHabit: saveHabit5,
             ),
-          ));
+          )));
+
+  void saveHabit5() {
+    final isValid = _formKey.currentState!.validate();
+
+    if (!isValid) {
+      return;
+    } else {
+      final provider = Provider.of<Habits5Provider>(context, listen: false);
+
+      provider.updateHabit5(widget.habit5, title, description);
+
+      Navigator.of(context).pop();
+    }
+  }
 }
 

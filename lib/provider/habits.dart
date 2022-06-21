@@ -6,22 +6,24 @@ class HabitsProvider extends ChangeNotifier {
 
   List<Habit> _habits = [
     Habit(
-        createdTime: DateTime.now(),
-        title: "Do my homework",
-  description: '''- All my subjects
+      createdTime: DateTime.now(),
+      title: "Do my homework",
+      description: '''- All my subjects
 - Economics
 - Coding
 - Accounting''',
-  ),
-  Habit(
-  createdTime: DateTime.now(),
-  title: 'Study for 2 hours today',
-  description: '''- Break every 30 minutes
+    ),
+    Habit(
+      createdTime: DateTime.now(),
+      title: 'Study for 2 hours today',
+      description: '''- Break every 30 minutes
   - Do not use the phone while studying
 ''',
-  ),
+    ),
   ];
-  List<Habit> get habits => _habits.where((habit) => habit.isDone == false).toList();
+
+  List<Habit> get habits =>
+      _habits.where((habit) => habit.isDone == false).toList();
 
   List<Habit> get habitsCompleted =>
       _habits.where((habit) => habit.isDone == true).toList();
@@ -31,11 +33,13 @@ class HabitsProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
   void removeHabit(Habit habit) {
     _habits.remove(habit);
 
     notifyListeners();
   }
+
   bool toggleHabitStatus(Habit habit) {
     habit.isDone = !habit.isDone;
     notifyListeners();
@@ -43,4 +47,10 @@ class HabitsProvider extends ChangeNotifier {
     return habit.isDone;
   }
 
+  void updateHabit(Habit habit, String title, String description) {
+    habit.title = title;
+    habit.description = description;
+
+    notifyListeners();
+  }
 }

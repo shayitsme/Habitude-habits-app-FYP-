@@ -44,4 +44,10 @@ class Habits6Provider extends ChangeNotifier {
 
     return habit6.isDone;
 }
+  void updateHabit6(Habit6 habit6, String title, String description) {
+    habit6.title = title;
+    habit6.description = description;
+
+    notifyListeners();
+  }
 }

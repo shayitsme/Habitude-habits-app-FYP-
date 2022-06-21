@@ -42,4 +42,10 @@ class Habits4Provider extends ChangeNotifier {
 
     return habit4.isDone;
   }
+  void updateHabit4(Habit4 habit4, String title, String description) {
+    habit4.title = title;
+    habit4.description = description;
+
+    notifyListeners();
+  }
 }
