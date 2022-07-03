@@ -59,7 +59,7 @@ class Habit4FormWidget extends StatelessWidget {
       border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10))
       ),
-      labelText: 'Description',
+      labelText: 'Description/Notes',
     ),
   );
   Widget buildButton() => SizedBox(

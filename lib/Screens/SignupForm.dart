@@ -48,7 +48,7 @@ class _SignupFormState extends State<SignupForm> {
           }).catchError((error) {
             print(error);
 
-            alertDialog(context, "Error: Data Save Fail");
+            alertDialog(context, "Email already in use");
           });
         }
       }
