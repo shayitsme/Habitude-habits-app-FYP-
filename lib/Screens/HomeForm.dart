@@ -86,7 +86,7 @@ class _HomeFormState extends State<HomeForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(Icons.self_improvement, size: 75, color: Colors.brown[400]),
-                      Text("Meditation", style: TextStyle(fontSize: 17.0)),
+                      Text("Prayer", style: TextStyle(fontSize: 17.0)),
                     ],
                   ),
                 ),

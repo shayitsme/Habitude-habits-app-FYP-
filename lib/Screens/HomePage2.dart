@@ -23,7 +23,7 @@ class _HomePage2State extends State<HomePage2> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('My meditation habit'),
+        title: Text('My Prayer habit'),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.brown[400],
         elevation: 4.0,

@@ -60,7 +60,7 @@ class Habit2Widget extends StatelessWidget {
 
                 Utils.showSnackBar(
                   context,
-                  isDone ? 'Meditation habit completed' : 'Meditation habit marked incomplete',
+                  isDone ? 'Prayer habit completed' : 'Prayer habit marked incomplete',
                 );
               },
             ),
@@ -96,7 +96,7 @@ class Habit2Widget extends StatelessWidget {
     final provider = Provider.of<Habits2Provider>(context, listen: false);
     provider.removeHabit2(habit2);
 
-    Utils.showSnackBar(context, 'Meditation habit successfully deleted');
+    Utils.showSnackBar(context, 'Prayer habit successfully deleted');
   }
   void editHabit2(BuildContext context, Habit2 habit2) => Navigator.of(context).push(
     MaterialPageRoute(builder: (context) => EditHabit2Page(habit2: habit2),

@@ -30,6 +30,13 @@ class _BMIScreenState extends State<BMIScreen> {
         appBar: AppBar(
         centerTitle: true,
         title: const Text("BMI Calculator"),
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.amber,
+          elevation: 2.0,
+          leading: Container(
+            padding: EdgeInsets.all(7),
+            child: Image.asset("assets/images/logo.jpg"),
+          ),
           actions: [
             IconButton(icon: Icon(Icons.home),
               onPressed: () => {

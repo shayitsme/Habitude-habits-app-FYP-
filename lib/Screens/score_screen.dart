@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:share/share.dart';
 
+import 'BMIScreen.dart';
+
 class ScoreScreen extends StatelessWidget {
   final double bmiScore;
 
@@ -23,7 +25,22 @@ class ScoreScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("BMI Score"),
-      ),
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.amber,
+          elevation: 2.0,
+          leading: Container(
+            padding: EdgeInsets.all(7),
+            child: Image.asset("assets/images/logo.jpg"),
+          ),
+          actions: [
+      IconButton(icon: Icon(Icons.scale),
+        onPressed: () =>
+        {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (_) => BMIScreen()))
+        }
+    ),
+      ]),
       body: Container(
           padding: const EdgeInsets.all(12),
           child: Card(
