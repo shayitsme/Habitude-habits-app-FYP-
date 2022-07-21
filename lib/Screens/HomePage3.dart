@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:login_with_signup/Screens/CalorieTrackerApp.dart';
-
 import '../widget/add3_habit_dialog_widget.dart';
 import '../widget/completed3_list_widget.dart';
 import '../widget/habit3_list_widget.dart';
@@ -33,12 +31,6 @@ class _HomePage3State extends State<HomePage3> {
           child: Image.asset("assets/images/logo.jpg"),
         ),
         actions: [
-          IconButton(icon: Icon(Icons.line_weight),
-            onPressed: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder:(_)=> CalorieTrackerApp()))
-            },
-          ),
           IconButton(icon: Icon(Icons.home),
             onPressed: () => {
               Navigator.push(context,
