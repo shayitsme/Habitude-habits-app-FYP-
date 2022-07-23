@@ -9,12 +9,22 @@ class Habits4Provider extends ChangeNotifier {
     Habit4(
       createdTime: DateTime.now(),
       title: 'Exercised for 30 minutes today',
-      description: '''- Watch favourite trainer on Youtube''',
+      description: '''Followed a fitness video on Youtube''',
     ),
     Habit4(
       createdTime: DateTime.now(),
-      title: 'Do some running/ walking today',
-      description: ''' ''',
+      title: 'Did some running or walking today',
+      description: '''Went to the gym or walked around the area ''',
+    ),
+    Habit4(
+      createdTime: DateTime.now(),
+      title: 'Did stretching before and after exercise',
+      description: '''10 minutes session ''',
+    ),
+    Habit4(
+      createdTime: DateTime.now(),
+      title: 'Took necessary breaks in between exercises',
+      description: '''Did not exert yourself''',
     ),
   ];
 

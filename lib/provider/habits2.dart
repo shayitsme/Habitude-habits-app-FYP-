@@ -8,14 +8,39 @@ class Habits2Provider extends ChangeNotifier {
   List<Habit2> _habits2 = [
     Habit2(
       createdTime: DateTime.now(),
-      title: 'Meditate today',
-      description: '''- 10 minutes alone time
+      title: 'Prayers',
+      description: '''
+''',
+    ),
+
+    Habit2(
+      createdTime: DateTime.now(),
+      title: 'Fajr (Sunrise Prayer)',
+      description: '''5.55a.m.
 ''',
     ),
     Habit2(
       createdTime: DateTime.now(),
-      title: 'Do sound healing today',
-      description: '''
+      title: 'Dhuhr (Noon Prayer)',
+      description: ''' 13.20p.m.
+''',
+    ),
+    Habit2(
+      createdTime: DateTime.now(),
+      title: 'Asr (Afternoon Prayer)',
+      description: '''16.44p.m.
+''',
+    ),
+    Habit2(
+      createdTime: DateTime.now(),
+      title: 'Maghrib (Sunset Prayer)',
+      description: '''7.28p.m.
+''',
+    ),
+    Habit2(
+      createdTime: DateTime.now(),
+      title: 'Isha (Night Prayer)',
+      description: '''8.58p.m.
 ''',
     ),
 

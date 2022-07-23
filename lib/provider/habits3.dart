@@ -10,13 +10,23 @@ class Habits3Provider extends ChangeNotifier {
     Habit3(
       createdTime: DateTime.now(),
       title: 'Did not skip breakfast',
-      description: ''' - Ate before 8.30am
+      description: '''Ate before 8.30am
       ''',
     ),
     Habit3(
       createdTime: DateTime.now(),
       title: 'Eat a healthy meal today',
-      description: '''- Well balanced meal of carbs, protein and fibre''',
+      description: '''Well balanced meal of carbs, protein and fibre''',
+    ),
+    Habit3(
+      createdTime: DateTime.now(),
+      title: 'No junk food for the day',
+      description: '''Healthy snacks is acceptable''',
+    ),
+    Habit3(
+      createdTime: DateTime.now(),
+      title: 'Note calorie intake',
+      description: '''Did not binge eat today''',
     ),
 
   ];

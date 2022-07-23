@@ -12,12 +12,17 @@ class Habits5Provider extends ChangeNotifier {
     Habit5(
       createdTime: DateTime.now(),
       title: 'Slept early yesterday',
-      description: '''- No phone before bedtime''',
+      description: '''No phone before bedtime''',
     ),
     Habit5(
       createdTime: DateTime.now(),
       title: 'Slept for 7 hours yesterday',
-      description: '''- Had an uninterrupted sleep''',
+      description: '''Had an uninterrupted sleep''',
+    ),
+    Habit5(
+      createdTime: DateTime.now(),
+      title: 'Calmed my thoughts before going to sleep',
+      description: '''No negativity kept me awake last night''',
     ),
   ];
 

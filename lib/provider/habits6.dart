@@ -9,14 +9,24 @@ class Habits6Provider extends ChangeNotifier {
   List<Habit6> _habits6 = [
     Habit6(
       createdTime: DateTime.now(),
-      title: 'Stop procrastinating',
-      description: '''- Read 5 pages everyday to stop procrastination''',
+      title: 'Woke up early today',
+      description: '''Did not sleep in''',
     ),
     Habit6(
       createdTime: DateTime.now(),
-      title: 'Stop playing video games every hour',
-      description: '''- Play only for 2 hours a day
-- Substitute gaming with active video learning
+      title: 'Did not procrastinate today',
+      description: '''Read 5 pages today to curb procrastination''',
+    ),
+    Habit6(
+      createdTime: DateTime.now(),
+      title: 'Did not smoke today',
+      description: '''Chewed a gum everytime I needed to smoke''',
+    ),
+    Habit6(
+      createdTime: DateTime.now(),
+      title: 'Did not play video games every hour today',
+      description: '''Played only for 3 hours today
+- Substituted gaming with active video learning
 ''',
     ),
   ];

@@ -7,17 +7,19 @@ class HabitsProvider extends ChangeNotifier {
   List<Habit> _habits = [
     Habit(
       createdTime: DateTime.now(),
-      title: "Do my homework",
-      description: '''- All my subjects
-- Economics
-- Coding
-- Accounting''',
+      title: "Homework/Revision",
+      description: '''- Your own subject choice''',
     ),
     Habit(
       createdTime: DateTime.now(),
       title: 'Study for 2 hours today',
-      description: '''- Break every 30 minutes
-  - Do not use the phone while studying
+      description: '''-Break every 30 minutes
+''',
+    ),
+    Habit(
+      createdTime: DateTime.now(),
+      title: 'No distractions during study',
+      description: '''No phones or gadgets when studying
 ''',
     ),
   ];

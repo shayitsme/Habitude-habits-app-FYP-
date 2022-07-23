@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class HabitFormWidget extends StatelessWidget {
  final String title;
  final String description;
@@ -7,7 +8,7 @@ class HabitFormWidget extends StatelessWidget {
  final ValueChanged<String> onChangedDescription;
  final VoidCallback onSavedHabit;
 
- const HabitFormWidget({Key? key,
+ HabitFormWidget({Key? key,
   required this.title,
   required this.description,
   required this.onChangedTitle,
@@ -23,9 +24,9 @@ class HabitFormWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
            buildTitle(),
-            SizedBox(height: 8),
+            SizedBox(height: 7),
             buildDescription(),
-            SizedBox(height: 32),
+            SizedBox(height: 7),
             buildButton(),
           ]
       ),
@@ -63,6 +64,7 @@ class HabitFormWidget extends StatelessWidget {
  ),
  );
 
+
  Widget buildDate() => TextFormField(
      decoration: InputDecoration(
          border: OutlineInputBorder(
@@ -84,5 +86,10 @@ class HabitFormWidget extends StatelessWidget {
    ),
  );
 
+  void setState(Null Function() param0) {}
+
 
 }
+
+
+
