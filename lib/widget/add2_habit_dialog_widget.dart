@@ -16,32 +16,38 @@ class _Add2HabitDialogWidgetState extends State<Add2HabitDialogWidget> {
   final _formKey = GlobalKey<FormState>();
   String title = '';
   String description = '';
+  DateTime createdTime = DateTime.now();
 
   @override
   Widget build(BuildContext context)  => AlertDialog(
     content: Form(
-  key: _formKey,
-  child: Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Add Habit',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
+      key: _formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Add Habit',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
           ),
-        ),
-        SizedBox(height: 8),
-        Habit2FormWidget(
-          onChangedTitle: (title) => setState(() => this.title = title),
-          onChangedDescription: (description) => setState(() => this.description = description),
-          onSavedHabit: addHabit2, description: '', title: '',
-        ),
+          SizedBox(height: 8),
+          Habit2FormWidget(
+            onChangedTitle: (title) => setState(() => this.title = title),
+            onChangedDescription: (description) => setState(() => this.description = description),
+            onSavedHabit: addHabit2, description: '', title: '',
+            onDatePicked: (v) {
+              setState(() {
+                createdTime = v;
+              });
+            },
+          ),
 
-      ],
+        ],
+      ),
     ),
-  ),
   );
   void addHabit2() {
     final isValid = _formKey.currentState!.validate();
@@ -53,7 +59,7 @@ class _Add2HabitDialogWidgetState extends State<Add2HabitDialogWidget> {
         id: DateTime.now().toString(),
         title: title,
         description: description,
-        createdTime: DateTime.now(),
+        createdTime: createdTime,
       );
       final provider = Provider.of<Habits2Provider>(context, listen: false);
       provider.addHabit2(habit2);
@@ -62,5 +68,3 @@ class _Add2HabitDialogWidgetState extends State<Add2HabitDialogWidget> {
     }
   }
 }
-
-

@@ -15,6 +15,7 @@ class _AddHabitDialogWidgetState extends State<AddHabitDialogWidget> {
   final _formKey = GlobalKey<FormState>();
   String title = '';
   String description = '';
+  DateTime createdTime = DateTime.now();
 
 
   @override
@@ -41,7 +42,11 @@ class _AddHabitDialogWidgetState extends State<AddHabitDialogWidget> {
                 onSavedHabit: addHabit,
                 title: '',
                 description: '',
-
+                onDatePicked: (v) {
+                  setState(() {
+                    createdTime = v;
+                  });
+                },
               ),
             ],
           ),
@@ -58,7 +63,7 @@ class _AddHabitDialogWidgetState extends State<AddHabitDialogWidget> {
         id: DateTime.now().toString(),
         title: title,
         description: description,
-        createdTime: DateTime.now(),
+        createdTime: createdTime,
       );
       final provider = Provider.of<HabitsProvider>(context, listen: false);
       provider.addHabit(habit);

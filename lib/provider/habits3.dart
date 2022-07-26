@@ -30,7 +30,6 @@ class Habits3Provider extends ChangeNotifier {
     ),
 
   ];
-
   List<Habit3> get habits3 =>
       _habits3.where((habit3) => habit3.isDone == false).toList();
 
@@ -55,9 +54,10 @@ class Habits3Provider extends ChangeNotifier {
 
     return habit3.isDone;
   }
-  void updateHabit3(Habit3 habit3, String title, String description) {
+  void updateHabit3(Habit3 habit3, String title, String description, DateTime createdTime) {
     habit3.title = title;
     habit3.description = description;
+    habit3.createdTime = createdTime;
 
     notifyListeners();
   }

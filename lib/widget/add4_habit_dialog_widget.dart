@@ -15,32 +15,38 @@ class _Add4HabitDialogWidgetState extends State<Add4HabitDialogWidget> {
   final _formKey = GlobalKey<FormState>();
   String title = '';
   String description = '';
+  DateTime createdTime = DateTime.now();
 
   @override
   Widget build(BuildContext context)  => AlertDialog(
     content:  Form(
       key: _formKey,
       child: Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Add Habit',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Add Habit',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
           ),
-        ),
-        SizedBox(height: 8),
-        Habit4FormWidget(
-          onChangedTitle: (title) => setState(() => this.title = title),
-          onChangedDescription: (description) => setState(() => this.description = description),
-          onSavedHabit: addHabit4, description: '', title: '',
-        ),
+          SizedBox(height: 8),
+          Habit4FormWidget(
+            onChangedTitle: (title) => setState(() => this.title = title),
+            onChangedDescription: (description) => setState(() => this.description = description),
+            onSavedHabit: addHabit4, description: '', title: '',
+            onDatePicked: (v) {
+              setState(() {
+                createdTime = v;
+              });
+            },
+          ),
 
-      ],
+        ],
+      ),
     ),
-  ),
   );
 
   void addHabit4() {
@@ -53,7 +59,7 @@ class _Add4HabitDialogWidgetState extends State<Add4HabitDialogWidget> {
         id: DateTime.now().toString(),
         title: title,
         description: description,
-        createdTime: DateTime.now(),
+        createdTime: createdTime,
       );
       final provider = Provider.of<Habits4Provider>(context, listen: false);
       provider.addHabit4(habit4);
@@ -62,6 +68,7 @@ class _Add4HabitDialogWidgetState extends State<Add4HabitDialogWidget> {
     }
   }
 }
+
 
 
 

@@ -17,31 +17,38 @@ class _Add3HabitDialogWidgetState extends State<Add3HabitDialogWidget> {
   String title = '';
   String description = '';
 
+  DateTime createdTime = DateTime.now();
+
   @override
   Widget build(BuildContext context) => AlertDialog(
     content: Form(
-  key: _formKey,
-  child: Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Add Habit',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
+      key: _formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Add Habit',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
           ),
-        ),
-        SizedBox(height: 8),
-        Habit3FormWidget(
-          onChangedTitle: (title) => setState(() => this.title = title),
-          onChangedDescription: (description) => setState(() => this.description = description),
-          onSavedHabit: addHabit3, description: '', title: '',
-        ),
+          SizedBox(height: 8),
+          Habit3FormWidget(
+            onChangedTitle: (title) => setState(() => this.title = title),
+            onChangedDescription: (description) => setState(() => this.description = description),
+            onSavedHabit: addHabit3, description: '', title: '',
+            onDatePicked: (v) {
+              setState(() {
+                createdTime = v;
+              });
+            },
+          ),
 
-      ],
+        ],
+      ),
     ),
-  ),
   );
   void addHabit3() {
     final isValid = _formKey.currentState!.validate();
@@ -53,7 +60,7 @@ class _Add3HabitDialogWidgetState extends State<Add3HabitDialogWidget> {
         id: DateTime.now().toString(),
         title: title,
         description: description,
-        createdTime: DateTime.now(),
+        createdTime: createdTime,
       );
       final provider = Provider.of<Habits3Provider>(context, listen: false);
       provider.addHabit3(habit3);
@@ -62,7 +69,4 @@ class _Add3HabitDialogWidgetState extends State<Add3HabitDialogWidget> {
     }
   }
 }
-
-
-
 

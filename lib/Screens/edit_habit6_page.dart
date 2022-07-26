@@ -18,6 +18,7 @@ class _EditHabit6PageState extends State<EditHabit6Page> {
 
   late String title;
   late String description;
+  late DateTime createdTime;
 
   @override
   void initState() {
@@ -28,23 +29,27 @@ class _EditHabit6PageState extends State<EditHabit6Page> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(
-          appBar: AppBar(
-            title: Text('Edit Habit'),
-            backgroundColor: Colors.brown[400],
-          ),
-          body: Padding(
-            padding: EdgeInsets.all(16),
-            child: Form(
-  key: _formKey,
-  child:Habit2FormWidget(
+  Widget build(BuildContext context) => Scaffold(
+      appBar: AppBar(
+        title: Text('Edit Habit'),
+        backgroundColor: Colors.brown[400],
+      ),
+      body: Padding(
+          padding: EdgeInsets.all(16),
+          child: Form(
+            key: _formKey,
+            child: Habit2FormWidget(
               title: title,
               description: description,
               onChangedTitle: (title) => setState(() => this.title = title),
               onChangedDescription: (description) =>
                   setState(() => this.description = description),
               onSavedHabit: saveHabit6,
+              onDatePicked: (val) {
+                setState(() {
+                  createdTime = val;
+                });
+              },
             ),
           )));
 
@@ -56,7 +61,7 @@ class _EditHabit6PageState extends State<EditHabit6Page> {
     } else {
       final provider = Provider.of<Habits6Provider>(context, listen: false);
 
-      provider.updateHabit6(widget.habit6, title, description);
+      provider.updateHabit6(widget.habit6, title, description,createdTime);
 
       Navigator.of(context).pop();
     }

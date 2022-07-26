@@ -88,6 +88,7 @@ class Habit2Widget extends StatelessWidget {
                 ],
               ),
             ),
+            Utils.setDateText(habit2.createdTime)
           ],
         ),
       );
@@ -102,6 +103,6 @@ class Habit2Widget extends StatelessWidget {
     MaterialPageRoute(builder: (context) => EditHabit2Page(habit2: habit2),
     ),
   );
-}
 
+}
 

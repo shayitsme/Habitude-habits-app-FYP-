@@ -17,28 +17,28 @@ class Habit6Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child:Slidable(
-    actionPane: SlidableDrawerActionPane(),
-    key: Key(habit6.id),
-    actions: [
-      IconSlideAction(
-        color: Colors.green,
-        onTap: () => editHabit6(context, habit6),
-        caption: 'Edit',
-        icon: Icons.edit,
-      )
-    ],
-    secondaryActions: [
-      IconSlideAction(
-        color: Colors.red,
-        caption: 'Delete',
-        onTap: () => deleteHabit6(context, habit6),
-        icon: Icons.delete,
-      )
-    ],
-    child: buildHabit(context),
-  ),
+    borderRadius: BorderRadius.circular(16),
+    child:Slidable(
+      actionPane: SlidableDrawerActionPane(),
+      key: Key(habit6.id),
+      actions: [
+        IconSlideAction(
+          color: Colors.green,
+          onTap: () => editHabit6(context, habit6),
+          caption: 'Edit',
+          icon: Icons.edit,
+        )
+      ],
+      secondaryActions: [
+        IconSlideAction(
+          color: Colors.red,
+          caption: 'Delete',
+          onTap: () => deleteHabit6(context, habit6),
+          icon: Icons.delete,
+        )
+      ],
+      child: buildHabit(context),
+    ),
   );
 
 
@@ -86,6 +86,7 @@ class Habit6Widget extends StatelessWidget {
             ],
           ),
         ),
+        Utils.setDateText(habit6.createdTime)
       ],
     ),
   );

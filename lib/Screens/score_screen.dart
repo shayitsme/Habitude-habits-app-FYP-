@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:login_with_signup/Comm/prefs.dart';
+import 'package:login_with_signup/utils.dart';
 import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:share/share.dart';
 
@@ -15,6 +17,8 @@ class ScoreScreen extends StatelessWidget {
 
   Color? bmiStatusColor;
 
+  bool added = false;
+
   ScoreScreen({Key? key, required this.bmiScore, required this.age})
       : super(key: key);
 
@@ -23,8 +27,8 @@ class ScoreScreen extends StatelessWidget {
     setBmiInterpretation();
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: const Text("BMI Score"),
+          centerTitle: true,
+          title: const Text("BMI Score"),
           automaticallyImplyLeading: false,
           backgroundColor: Colors.amber,
           elevation: 2.0,
@@ -33,14 +37,13 @@ class ScoreScreen extends StatelessWidget {
             child: Image.asset("assets/images/logo.jpg"),
           ),
           actions: [
-      IconButton(icon: Icon(Icons.scale),
-        onPressed: () =>
-        {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (_) => BMIScreen()))
-        }
-    ),
-      ]),
+            IconButton(
+                icon: Icon(Icons.scale),
+                onPressed: () => {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => BMIScreen()))
+                }),
+          ]),
       body: Container(
           padding: const EdgeInsets.all(12),
           child: Card(
@@ -107,6 +110,31 @@ class ScoreScreen extends StatelessWidget {
                                   "Your BMI is ${bmiScore.toStringAsFixed(1)} at age $age");
                             },
                             child: const Text("Share")),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              if (!added) {
+                                var listScore =
+                                Prefs.getStringList(Prefs.BMIScore);
+                                var listAge = Prefs.getStringList(Prefs.BMIAge);
+                                var listDate =
+                                Prefs.getStringList(Prefs.BMIDate);
+                                listScore?.add(bmiScore.toString());
+                                listAge?.add(age.toString());
+                                listDate?.add(DateTime.now().toString());
+
+                                Prefs.setStringList(Prefs.BMIScore, listScore!);
+                                Prefs.setStringList(Prefs.BMIAge, listAge!);
+                                Prefs.setStringList(Prefs.BMIDate, listDate!);
+                                Utils.showSnackBar(context, 'Score saved');
+                                added = true;
+                              } else {
+                                Utils.showSnackBar(context, 'Already saved');
+                              }
+                            },
+                            child: const Text("Save")),
                       ],
                     )
                   ]))),

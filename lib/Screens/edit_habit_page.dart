@@ -3,6 +3,7 @@ import 'package:login_with_signup/provider/habits.dart';
 import 'package:login_with_signup/widget/habit_form_widget.dart';
 import 'package:provider/provider.dart';
 import '../models/habit.dart';
+import '../utils.dart';
 
 class EditHabitPage extends StatefulWidget {
   final Habit habit;
@@ -18,6 +19,7 @@ class _EditHabitPageState extends State<EditHabitPage> {
 
   late String title;
   late String description;
+  late DateTime createdTime;
 
   @override
   void initState() {
@@ -28,26 +30,30 @@ class _EditHabitPageState extends State<EditHabitPage> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(
-        appBar: AppBar(
-          title: Text('Edit Habit'),
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(
+      title: Text('Edit Habit'),
+    ),
+    body: Padding(
+      padding: EdgeInsets.all(16),
+      child: Form(
+        key: _formKey,
+        child: HabitFormWidget(
+          title: title,
+          description: description,
+          onChangedTitle: (title) => setState(() => this.title = title),
+          onChangedDescription: (description) =>
+              setState(() => this.description = description),
+          onSavedHabit: saveHabit,
+          onDatePicked: (val) {
+            setState(() {
+              createdTime = val;
+            });
+          },
         ),
-        body: Padding(
-          padding: EdgeInsets.all(16),
-          child: Form(
-            key: _formKey,
-            child: HabitFormWidget(
-              title: title,
-              description: description,
-              onChangedTitle: (title) => setState(() => this.title = title),
-              onChangedDescription: (description) =>
-                  setState(() => this.description = description),
-              onSavedHabit: saveHabit,
-            ),
-          ),
-        ),
-      );
+      ),
+    ),
+  );
 
   void saveHabit() {
     final isValid = _formKey.currentState!.validate();
@@ -57,10 +63,9 @@ class _EditHabitPageState extends State<EditHabitPage> {
     } else {
       final provider = Provider.of<HabitsProvider>(context, listen: false);
 
-      provider.updateHabit(widget.habit, title, description);
+      provider.updateHabit(widget.habit, title, description, createdTime);
 
       Navigator.of(context).pop();
     }
   }
-
 }

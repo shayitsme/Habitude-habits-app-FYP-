@@ -91,6 +91,7 @@ class Habit4Widget extends StatelessWidget {
                 ],
               ),
             ),
+            Utils.setDateText(habit4.createdTime)
           ],
         ),
       );

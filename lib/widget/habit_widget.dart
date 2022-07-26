@@ -94,6 +94,7 @@ class HabitWidget extends StatelessWidget {
                 ],
               ),
             ),
+            setDateText(habit.createdTime),
           ],
         ),
       );
@@ -107,7 +108,12 @@ class HabitWidget extends StatelessWidget {
 
   void editHabit(BuildContext context, Habit habit) => Navigator.of(context).push(
     MaterialPageRoute(builder: (context) => EditHabitPage(habit: habit),
-  ),
+    ),
   );
+
+  setDateText(DateTime createdTime) {
+    var formattedDate = "${createdTime.day}-${createdTime.month}-${createdTime.year}";
+    return Text(formattedDate);
+  }
 
 }

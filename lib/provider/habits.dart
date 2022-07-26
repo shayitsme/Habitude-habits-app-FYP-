@@ -49,9 +49,10 @@ class HabitsProvider extends ChangeNotifier {
     return habit.isDone;
   }
 
-  void updateHabit(Habit habit, String title, String description) {
+  void updateHabit(Habit habit, String title, String description, DateTime createdTime) {
     habit.title = title;
     habit.description = description;
+    habit.createdTime = createdTime;
 
     notifyListeners();
   }

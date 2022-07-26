@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_with_signup/utils.dart';
 import 'package:login_with_signup/widget/habit_form_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,7 @@ class _EditHabit4PageState extends State<EditHabit4Page> {
 
   late String title;
   late String description;
+  late DateTime createdTime;
 
   @override
   void initState() {
@@ -29,22 +31,26 @@ class _EditHabit4PageState extends State<EditHabit4Page> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(
-          appBar: AppBar(
-            title: Text('Edit Habit'),
-          ),
-          body: Padding(
-            padding: EdgeInsets.all(16),
-            child:Form(
-  key: _formKey,
-  child:  HabitFormWidget(
+  Widget build(BuildContext context) => Scaffold(
+      appBar: AppBar(
+        title: Text('Edit Habit'),
+      ),
+      body: Padding(
+          padding: EdgeInsets.all(16),
+          child: Form(
+            key: _formKey,
+            child: HabitFormWidget(
               title: title,
               description: description,
               onChangedTitle: (title) => setState(() => this.title = title),
               onChangedDescription: (description) =>
                   setState(() => this.description = description),
               onSavedHabit: saveHabit4,
+              onDatePicked: (val) {
+                setState(() {
+                  createdTime = val;
+                });
+              },
             ),
           )));
 
@@ -56,11 +62,10 @@ class _EditHabit4PageState extends State<EditHabit4Page> {
     } else {
       final provider = Provider.of<Habits4Provider>(context, listen: false);
 
-      provider.updateHabit4(widget.habit4, title, description);
+      provider.updateHabit4(widget.habit4, title, description,createdTime);
 
       Navigator.of(context).pop();
     }
   }
 }
-
 

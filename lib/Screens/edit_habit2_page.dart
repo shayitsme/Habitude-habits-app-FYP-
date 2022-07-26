@@ -18,6 +18,7 @@ class _EditHabit2PageState extends State<EditHabit2Page> {
 
   late String title;
   late String description;
+  late DateTime createdTime;
 
   @override
   void initState() {
@@ -45,6 +46,11 @@ class _EditHabit2PageState extends State<EditHabit2Page> {
                   onChangedDescription: (description) =>
                       setState(() => this.description = description),
                   onSavedHabit: saveHabit2,
+                  onDatePicked: (val) {
+                    setState(() {
+                      createdTime = val;
+                    });
+                  },
                 ),
               )));
 
@@ -56,12 +62,10 @@ class _EditHabit2PageState extends State<EditHabit2Page> {
     } else {
       final provider = Provider.of<Habits2Provider>(context, listen: false);
 
-      provider.updateHabit2(widget.habit2, title, description);
+      provider.updateHabit2(widget.habit2, title, description,createdTime);
 
       Navigator.of(context).pop();
     }
   }
 
 }
-
-

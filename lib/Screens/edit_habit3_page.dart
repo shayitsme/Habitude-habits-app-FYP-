@@ -18,6 +18,7 @@ class _EditHabit3PageState extends State<EditHabit3Page> {
 
   late String title;
   late String description;
+  late DateTime createdTime;
 
   @override
   void initState() {
@@ -35,18 +36,22 @@ class _EditHabit3PageState extends State<EditHabit3Page> {
             backgroundColor: Colors.brown[400],
           ),
           body: Padding(
-            padding: EdgeInsets.all(16),
-            child: Form(
-  key: _formKey,
-  child: Habit2FormWidget(
-              title: title,
-              description: description,
-              onChangedTitle: (title) => setState(() => this.title = title),
-              onChangedDescription: (description) =>
-                  setState(() => this.description = description),
-              onSavedHabit: saveHabit3,
-            ),
-          )));
+              padding: EdgeInsets.all(16),
+              child: Form(
+                key: _formKey,
+                child: Habit2FormWidget(
+                  title: title,
+                  description: description,
+                  onChangedTitle: (title) => setState(() => this.title = title),
+                  onChangedDescription: (description) =>
+                      setState(() => this.description = description),
+                  onSavedHabit: saveHabit3, onDatePicked: ( val) {
+                  setState(() {
+                    createdTime = val;
+                  });
+                },
+                ),
+              )));
 
   void saveHabit3() {
     final isValid = _formKey.currentState!.validate();
@@ -56,7 +61,7 @@ class _EditHabit3PageState extends State<EditHabit3Page> {
     } else {
       final provider = Provider.of<Habits3Provider>(context, listen: false);
 
-      provider.updateHabit3(widget.habit3, title, description);
+      provider.updateHabit3(widget.habit3, title, description,createdTime);
 
       Navigator.of(context).pop();
     }
